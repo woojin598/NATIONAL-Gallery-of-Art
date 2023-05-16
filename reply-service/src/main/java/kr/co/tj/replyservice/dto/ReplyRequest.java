@@ -13,6 +13,8 @@ public class ReplyRequest {
 	
 	private String username;
 	
+	private long bid;
+	
 	private String comment;
 
 }

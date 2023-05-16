@@ -33,6 +33,7 @@ public class ReplyDTO implements Serializable {
 		 
 		return ReplyDTO.builder()
 				.username(replyRequest.getUsername())
+				.bid(replyRequest.getBid())
 				.comment(replyRequest.getComment())
 				.build();
 	}
@@ -62,8 +63,11 @@ public class ReplyDTO implements Serializable {
 	
 	public static ReplyDTO toReplyEntity(ReplyEntity replyEntity) {
 		return ReplyDTO.builder()
+				.id(replyEntity.getId())
+				.bid(replyEntity.getBid())
 				.username(replyEntity.getUsername())
 				.comment(replyEntity.getComment())
+				.createDate(replyEntity.getCreateDate())
 				.updateDate(replyEntity.getUpdateDate())				
 				.build();
 	}
