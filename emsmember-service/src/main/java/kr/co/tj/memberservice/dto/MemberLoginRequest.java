@@ -1,4 +1,4 @@
-package kr.co.tj.replyservice.dto;
+package kr.co.tj.memberservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,15 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class ReplyRequest {
+public class MemberLoginRequest{ //로그인 시 받을 정보
 	
 	private String username;
 	
-	private long bid;
+	private String password;
 	
-	private String comment;
-
 }

@@ -49,17 +49,31 @@ public class ReplyService {
 	    
 	    return null;
 	}
-
-	public ReplyDTO update(ReplyDTO replyDTO) {
-		  ReplyDTO existingReply = findById(replyDTO.getId()); // 중복 조회 대신 replyDTO를 사용
-		    
-		    existingReply.setUsername(replyDTO.getUsername());
-		    existingReply.setComment(replyDTO.getComment());
-		    
-		    ReplyEntity updatedReplyEntity = replyRepository.save(existingReply.toReplyEntity());
-		    
-	    return ReplyDTO.toReplyEntity(updatedReplyEntity);
+	public ReplyDTO update(ReplyDTO dto) {
+		Optional<ReplyEntity> optional = replyRepository.findById(dto.getId());
+		if (optional.isPresent()) {
+			ReplyEntity entity = optional.get();
+			entity.setComment(dto.getComment());
+			entity.setUsername(dto.getUsername());
+			entity.setUpdateDate(new Date());
+			entity = replyRepository.save(entity);
+			return ReplyDTO.toReplyEntity(entity);
+		} else {
+			throw new RuntimeException("해당하는 댓글이 없습니다.");
+		}
 	}
+
+
+//	public ReplyDTO update(ReplyDTO replyDTO) {
+//		  ReplyDTO existingReply = replyRepository.findById(); // 중복 조회 대신 replyDTO를 사용
+//		    
+//		    existingReply.setUsername(replyDTO.getUsername());
+//		    existingReply.setComment(replyDTO.getComment());
+//		    
+//		    ReplyEntity updatedReplyEntity = replyRepository.save(existingReply.toReplyEntity());
+//		    
+//	    return ReplyDTO.toReplyEntity(updatedReplyEntity);
+//	}
 
 	public ReplyDTO deleteById(long id) {
 		replyRepository.deleteById(id);
