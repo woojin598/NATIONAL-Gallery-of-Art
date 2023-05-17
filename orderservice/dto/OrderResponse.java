@@ -16,20 +16,13 @@ public class OrderResponse implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private long id;
+	private String orderId;
+	private String username;
+	private String productId;
+	private long qty;
+	private long unitPrice;
+	private long totalPrice;
+	private Date createAt;
+	private Date updateAt;
 	
-	private String itemName;
-	
-	private String title;
-	
-	private String itemDescribe;
-	
-	private long price;
-	
-	private String staff;
-	
-	private Date createDate;
-	
-	private Date updateDate;
-
 }

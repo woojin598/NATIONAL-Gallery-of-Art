@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import kr.co.tj.orderservice.dto.OrderResponse;
 
-@FeignClient(name = "order-service")
-public interface OrderFeign {
-	
-	@PutMapping("order-service/orders/id")
-	public String updateStockById(@RequestBody OrderResponse orderResponse);
 
+@FeignClient(name = "catalog-service")
+public interface OrderFeign {
+
+	@PutMapping("catalog-service/catalogs/productid")
+	public String updateStockByProductId(@RequestBody OrderResponse orderResponse);
+		
 }
