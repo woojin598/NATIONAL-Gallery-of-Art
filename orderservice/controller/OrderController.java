@@ -45,7 +45,7 @@ public class OrderController {
 		
 		OrderDTO orderDTO = OrderDTO.toOrderDTO(orderRequest);
 		
-		orderDTO = orderService.createOrder(orderDTO);
+		//orderDTO = orderService.createOrder(orderDTO);
 		
 		OrderResponse orderResponse = orderDTO.toOrderResponse();
 		

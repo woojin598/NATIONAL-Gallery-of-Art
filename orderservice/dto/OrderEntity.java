@@ -29,24 +29,28 @@ public class OrderEntity implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@Column(nullable = false)
-	private String itemName;
+	private String username;
 	
 	@Column(nullable = false)
-	private String title;
+	private String productId;
+	
+	@Column(nullable = false, unique = true)
+	private String orderId;
 	
 	@Column(nullable = false)
-	private String itemDescribe;
+	private Long qty;
 	
 	@Column(nullable = false)
-	private long price;
+	private Long unitPrice;
 	
 	@Column(nullable = false)
-	private String staff;
+	private Long totalPrice;
 	
-	private Date createDate;
-	private Date updateDate;
+	private Date createAt;
+	
+	private Date updateAt;
 
 }

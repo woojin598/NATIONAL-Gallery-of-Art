@@ -3,6 +3,7 @@ package kr.co.tj.orderservice.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,36 +27,41 @@ public class OrderService {
 		
 		orderDTO = getDate(orderDTO);
 		
+		orderDTO.setOrderId(UUID.randomUUID().toString());
+		
+		orderDTO.setTotalPrice(orderDTO.getUnitPrice() * orderDTO.getQty());
+		
 		OrderEntity orderEntity = orderDTO.toOrderEntity();
 		
 		orderEntity = orderRepository.save(orderEntity);
 		
 		OrderResponse orderResponse = orderDTO.toOrderResponse();
 		
-		String result = orderFeign.updateStockById(orderResponse);
+		String result = orderFeign.updateStockByProductId(orderResponse);
 		
 		if(result.startsWith("0")) {
 			orderRepository.delete(orderEntity);
 			
 			return null;
 		}
+		 
 		return orderDTO;
 	}
 	
 	private OrderDTO getDate(OrderDTO orderDTO) {
 		Date now = new Date();
 		
-		if(orderDTO.getCreateDate() == null) {
-			orderDTO.setCreateDate(now);
+		if(orderDTO.getCreateAt() == null) {
+			orderDTO.setCreateAt(now);
 		}
 		
-		orderDTO.setUpdateDate(now);
+		orderDTO.setUpdateAt(now);
 		
 		return orderDTO;
 	}
 
 	public List<OrderDTO> getOrdersByItem(String itemName) {
-		List<OrderEntity> dbList = orderRepository.findByitemName(itemName);
+		List<OrderEntity> dbList = orderRepository.findByUsername(itemName);
 		List<OrderDTO> list = new ArrayList<>();
 		
 		for(OrderEntity x : dbList) {
