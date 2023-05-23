@@ -20,6 +20,12 @@ GET - Cart-service/cart/list/{id} [아이템명에 따라 카트 목록 조회] 
 DELETE - Cart-service/cart/delete/{id} [아이템명에 따라 카트에서 아이템제거] SEC : - , Roles : -
 PUT - Cart-service/catalogs/itemname [상품 주문에 따른 재고 업데이트] SEC : - , Roles : -
 
+POST - cart/items {장바구니에 아이템 추가} SEC: - , Roles: -
+PUT - cart/items/{itemId} {장바구니 아이템 수정} SEC: - , Roles: -
+DELETE - cart/items/{itemId} {장바구니 특정 아이템 삭제} SEC: - , Roles: -
+GET - cart/items {장바구니 아이템 목록 조회} SEC: - , Roles: -
+DELETE - cart/clear {장바구니 비우기} SEC: - , Roles: -
+
 - - - - - - - -
 
 Item
