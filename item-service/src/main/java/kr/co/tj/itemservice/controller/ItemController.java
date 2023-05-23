@@ -1,6 +1,7 @@
 package kr.co.tj.itemservice.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,7 @@ import kr.co.tj.itemservice.dto.ItemDTO;
 import kr.co.tj.itemservice.dto.ItemEntity;
 import kr.co.tj.itemservice.dto.ItemRequest;
 import kr.co.tj.itemservice.dto.ItemResponse;
-import kr.co.tj.itemservice.dto.ReplyRequest;
+import kr.co.tj.itemservice.dto.ReplyResponse;
 import kr.co.tj.itemservice.feign.ReplyFeign;
 import kr.co.tj.itemservice.service.ItemService;
 
@@ -37,14 +38,14 @@ public class ItemController {
 	private Environment env;
 	
 	@Autowired
+    private ReplyFeign replyFeign;
+	
+	@Autowired
 	private ItemService itemService;
-
 	
-
 	public ItemController(ItemService itemService) {
-		this.itemService = itemService;	
+        this.itemService = itemService;
     }
-	
 	
 	//검색기능
 	@GetMapping("/search")
@@ -89,6 +90,12 @@ public class ItemController {
 		String result;
 		
 		try {
+	        // Update the fields of itemEntity with the values from itemResponse
+	        itemEntity.setArtist(itemResponse.getArtist());
+	        itemEntity.setItemDescribe(itemResponse.getItemDescribe());
+	        itemEntity.setPrice(itemResponse.getPrice());
+	        itemEntity.setUpdateDate(new Date());
+	        
 			result = itemService.updateItemByTitle(itemEntity);
 			
 			if (result.equalsIgnoreCase("ok")) {
@@ -116,7 +123,7 @@ public class ItemController {
 		}
 	}
 	
-	@GetMapping("/items/{id}")
+	@GetMapping("/item/{id}")
 	public ResponseEntity<?> findById(@PathVariable("id") Long id){
 		Map<String, Object> map = new HashMap<>();
 		
@@ -128,7 +135,13 @@ public class ItemController {
 		try {
 			ItemDTO dto = itemService.findById(id);
 			map.put("result", dto);
+			
+// 댓글 목록을 조회하여 함께 반환
+	  List<ReplyResponse> replyList = replyFeign.getReplysByItemId(id);
+	   map.put("replys", replyList);
+			
 			return ResponseEntity.ok().body(map);
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 	         map.put("result", "가져오기에 실패");
@@ -136,18 +149,8 @@ public class ItemController {
 	         return ResponseEntity.badRequest().body(map);
 		}
 		
-//		List<ItemDTO> list = itemService.getListByTitle(title);
-//		
-//		List<ItemResponse> responseList = new ArrayList<>();
-//		
-//		for(ItemDTO itemDTO : list) {
-//			ItemResponse itemResponse = itemDTO.toItemResponse();
-//			responseList.add(itemResponse);
-//		}
-//		
-//		
-//		return ResponseEntity.status(HttpStatus.OK).body(responseList);
 	}
+	
 	
     @PostMapping("/items")
     	public ResponseEntity<?> createitem(@RequestBody ItemRequest itemRequest){

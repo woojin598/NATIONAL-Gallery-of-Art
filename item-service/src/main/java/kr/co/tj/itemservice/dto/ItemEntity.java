@@ -2,6 +2,7 @@ package kr.co.tj.itemservice.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,5 +45,6 @@ public class ItemEntity implements Serializable {
 	
 	private Date createDate;
 	private Date updateDate;
+		
 	
 }
