@@ -23,16 +23,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Table(name = "orders")
-public class OrderEntity implements Serializable{
+public class OrderEntity implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long id; // 안보이는 유저 id
 	
 	@Column(nullable = false)
-	private String username;
+	private String username; 
 	
 	@Column(nullable = false)
 	private String productId;
@@ -41,16 +41,25 @@ public class OrderEntity implements Serializable{
 	private String orderId;
 	
 	@Column(nullable = false)
-	private Long qty;
+	private String artist;
 	
 	@Column(nullable = false)
-	private Long unitPrice;
+	private String title;
 	
 	@Column(nullable = false)
-	private Long totalPrice;
+	private String itemDescribe;
 	
-	private Date createAt;
+	@Column(nullable = false)
+	private Long qty; // 상품수량
 	
-	private Date updateAt;
+	@Column(nullable = false)
+	private Long unitPrice; // 개별 가격
+	
+	@Column(nullable = false)
+	private Long totalPrice; // 통합 가격
+	
+	private Date createDate; // 데이터 생성 일시
+	
+	private Date updateDate; // 업데이트 일시
 
 }

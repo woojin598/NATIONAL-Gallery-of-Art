@@ -12,30 +12,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OrderResponse implements Serializable{
+public class ItemResponse implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private String itemName;
+	
 	private long id;
 	
-	private String orderId;
+	private Long stock;
 	
-	private String productId;
-	
-	private String artist;
-	
-	private String title;
-	
-	private String itemDescribe;
-	
-	private long qty;
-	
-	private long unitPrice;
-	
-	private long totalPrice;
+	private Long unitPrice;
 	
 	private Date createAt;
 	
-	private Date updateAt;
-	
+	private long qty;
+
 }

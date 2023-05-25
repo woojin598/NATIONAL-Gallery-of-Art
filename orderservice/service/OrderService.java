@@ -5,7 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.co.tj.orderservice.dto.OrderDTO;
@@ -13,6 +16,7 @@ import kr.co.tj.orderservice.dto.OrderEntity;
 import kr.co.tj.orderservice.dto.OrderResponse;
 import kr.co.tj.orderservice.feign.OrderFeign;
 import kr.co.tj.orderservice.jpa.OrderRepository;
+import kr.co.tj.orderservice.sec.TokenProvider;
 
 @Service
 public class OrderService {
@@ -21,7 +25,14 @@ public class OrderService {
 	private OrderRepository orderRepository;
 	
 	@Autowired
+	private TokenProvider tokenProvider;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
 	private OrderFeign orderFeign;
+	
 	
 	public OrderDTO createOrder(OrderDTO orderDTO) {
 		
@@ -32,7 +43,6 @@ public class OrderService {
 		orderDTO.setTotalPrice(orderDTO.getUnitPrice() * orderDTO.getQty());
 		
 		OrderEntity orderEntity = orderDTO.toOrderEntity();
-		
 		orderEntity = orderRepository.save(orderEntity);
 		
 		OrderResponse orderResponse = orderDTO.toOrderResponse();
@@ -48,14 +58,41 @@ public class OrderService {
 		return orderDTO;
 	}
 	
+//	public OrderDTO editOrder(OrderDTO orderDTO) {
+//		
+//		orderDTO = getDate(orderDTO);
+//		
+//		orderDTO.getItemName();
+//		orderDTO.getProductId();
+//		
+//		orderDTO.setUnitPrice(orderDTO.getUnitPrice());
+//		
+//		orderDTO.setTotalPrice(orderDTO.getUnitPrice() * orderDTO.getQty());
+//		
+//		OrderEntity orderEntity = orderDTO.toOrderEntity();
+//		orderEntity = orderRepository.save(orderEntity);
+//		
+//		OrderResponse orderResponse = orderDTO.toOrderResponse();
+//		
+//		String result = orderFeign.updateStockByProductId(orderResponse);
+//		
+//		if(result.startsWith("0")) {
+//			orderRepository.delete(orderEntity);
+//			
+//			return null;
+//		}
+//		
+//		return orderDTO;
+//	}
+	
 	private OrderDTO getDate(OrderDTO orderDTO) {
 		Date now = new Date();
 		
-		if(orderDTO.getCreateAt() == null) {
-			orderDTO.setCreateAt(now);
+		if(orderDTO.getCreateDate() == null) {
+			orderDTO.setCreateDate(now);
 		}
 		
-		orderDTO.setUpdateAt(now);
+		orderDTO.setUpdateDate(now);
 		
 		return orderDTO;
 	}
@@ -71,12 +108,51 @@ public class OrderService {
 		
 		return list;
 	}
+	
+	// 주문 정보 수정
+	@Transactional
+	public OrderDTO editOrder(OrderDTO orderDTO) {
+		OrderEntity orderEntity = orderRepository.findByOrderId(orderDTO.getOrderId());
+		
+		if (orderEntity == null) {
+			throw new RuntimeException("주문 정보가 잘못됐습니다...");
+		}
+		
+//		if (!passwordEncoder.matches(orderDTO.getPassword, null)) {
+//			
+//		}
+		
+		orderEntity.setUnitPrice(orderDTO.getUnitPrice() - (orderDTO.getUnitPrice() - (orderDTO.getQty() * orderDTO.getUnitPrice())));
+		orderEntity.setTotalPrice(orderDTO.getUnitPrice() * orderDTO.getQty());
+		
+		return orderDTO;
+	}
+	
+	public OrderEntity getItemByTitle(String title) {
+		// TODO Auto-generated method stub
+		return orderRepository.findByTitle(title);
+	}
+	
+	//삭제
+	public OrderEntity getByCredentials(String productId) {
+		return orderRepository.findByProdutId(productId);
+	}
 
-//	public OrderDTO deleteById(long id) {
-//		
-//		delete
-//		
-//		
-//		return orderDTO;
-//	}
+	//삭제
+	@Transactional
+	public void delete(OrderDTO orderDTO) {
+		OrderEntity orderEntity = getByCredentials(orderDTO.getProductId());
+		
+		if (orderEntity == null) {
+			throw new RuntimeException("상품 정보가 잘못됐습니다...");
+		}
+		
+		if (!passwordEncoder.matches(orderDTO.getOrderId(), orderEntity.getOrderId())) {
+			throw new RuntimeException();
+			
+		}
+		
+		orderRepository.delete(orderEntity);
+	}
+	
 }
