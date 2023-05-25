@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -15,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.tj.itemservice.dto.ItemDTO;
 import kr.co.tj.itemservice.dto.ItemEntity;
+import kr.co.tj.itemservice.feign.ReplyFeign;
 import kr.co.tj.itemservice.repository.ItemRepository;
 
 import org.springframework.data.domain.Page;
@@ -27,6 +27,9 @@ public class ItemService {
 	
 	@Autowired
 	private ItemRepository itemRepository;
+	
+	@Autowired
+	private ReplyFeign replyFeign;
 		
 	public ItemDTO createItem(ItemDTO itemDTO) {
 		
@@ -141,7 +144,18 @@ public class ItemService {
 	public String updateItemByTitle(ItemEntity itemEntity) {
 		
 		try {
-			itemRepository.save(itemEntity);
+			ItemEntity existingItem = itemRepository.findByTitle(itemEntity.getTitle());
+			
+			if(existingItem == null) {
+				return "fail";
+			}
+			
+			existingItem.setArtist(itemEntity.getArtist());
+	        existingItem.setItemDescribe(itemEntity.getItemDescribe());
+	        existingItem.setPrice(itemEntity.getPrice());
+	        existingItem.setUpdateDate(new Date());
+	        
+	        itemRepository.save(existingItem);
 			
 			return "ok";
 		} catch (Exception e) {

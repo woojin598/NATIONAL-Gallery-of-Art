@@ -2,6 +2,7 @@ package kr.co.tj.orderservice.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,21 +17,31 @@ public class OrderDTO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String username;
+	private long id;
 	
-	private String productId;
+	private String itemName;
+	
+	private String username;
 	
 	private String orderId;
 	
+	private String productId;
+	
+	private String artist;
+	
+	private String title;
+	
+	private String itemDescribe;
+
 	private Long qty;
 	
 	private Long unitPrice;
 	
 	private Long totalPrice;
 	
-	private Date createAt;
+	private Date createDate;
 	
-	private Date updateAt;
+	private Date updateDate;
 	
 //	private Long id;
 //	
@@ -51,8 +62,8 @@ public class OrderDTO implements Serializable{
 	public static OrderDTO toOrderDTO(OrderRequest orderRequest) {
 		
 		return OrderDTO.builder()
-				.username(orderRequest.getUsername())
-				.productId(orderRequest.getProductId())
+				.artist(orderRequest.getArtist())
+				.title(orderRequest.getTitle())			
 				.qty(orderRequest.getQty())
 				.unitPrice(orderRequest.getUnitPrice())
 				.build();
@@ -61,57 +72,42 @@ public class OrderDTO implements Serializable{
 	public static OrderDTO toOrderDTO(OrderEntity orderEntity) {
 		
 		return OrderDTO.builder()
-				.username(orderEntity.getUsername())
-				.productId(orderEntity.getProductId())
-				.orderId(orderEntity.getOrderId())
-				.qty(orderEntity.getQty())
+				.artist(orderEntity.getArtist())
+				.title(orderEntity.getTitle())
+				.itemDescribe(orderEntity.getItemDescribe())
 				.unitPrice(orderEntity.getUnitPrice())
-				.totalPrice(orderEntity.getTotalPrice())
-				.createAt(orderEntity.getCreateAt())
-				.updateAt(orderEntity.getUpdateAt())
 				.build();
 	}
 	
 	public OrderResponse toOrderResponse() {
 		
 		return OrderResponse.builder()
-				.username(username)
-				.createAt(createAt)
-				.orderId(orderId)
-				.productId(productId)
-				.qty(qty)
+				.artist(artist)
+				.title(title)
+
+				.itemDescribe(itemDescribe)
 				.totalPrice(totalPrice)
 				.unitPrice(unitPrice)
-				.updateAt(updateAt)
+				
+				.createAt(createDate)
+				.updateAt(updateDate)
 				.build();
 	}
 	
-//	public OrderDTO toOrderDTO() {
-//		
-//		return OrderDTO.builder()
-//				.id(id)
-//				.itemName(itemName)
-//				.title(title)
-//				.itemDescribe(itemDescribe)
-//				.price(price)
-//				.staff(staff)
-//				.createDate(createDate)
-//				.updateDate(updateDate)
-//				.build();
-//	}
 	public OrderEntity toOrderEntity() {
 		
 		return OrderEntity.builder()
-				.username(username)
-				.productId(productId)
-				.orderId(orderId)
-				.qty(qty)
+				.artist(artist)
+				.title(title)
+				.itemDescribe(itemDescribe)
 				.unitPrice(unitPrice)
-				.totalPrice(totalPrice)
-				.createAt(createAt)
-				.updateAt(updateAt)
+				.createDate(createDate)
+				.updateDate(updateDate)
 				.build();
 	}
 	
+	public void setId(UUID randomUUID) {
+		this.id = id;
+	}
 
 }
