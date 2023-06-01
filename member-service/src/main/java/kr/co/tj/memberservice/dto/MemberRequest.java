@@ -13,6 +13,8 @@ public class MemberRequest { //toMemberDTO
 
 	private String username;
 	private String name;
+	
+	private String gender;
 
 	private String email;
 	private String phonenum;
@@ -20,6 +22,6 @@ public class MemberRequest { //toMemberDTO
 
 	private String password;
 	private String password2;
-	private String orgPassword;
+	private String orgPassword; // 회원정보 수정 전 비밀번호 재확인 구현 예정
 
 }

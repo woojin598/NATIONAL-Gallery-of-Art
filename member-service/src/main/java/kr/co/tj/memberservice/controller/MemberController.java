@@ -156,6 +156,9 @@ public class MemberController {
 	@PutMapping("/update")
 	public ResponseEntity<?> update(@RequestBody MemberRequest memberRequest) {
 		Map<String, Object> map = new HashMap<>();
+		
+		System.out.println("memberRequest:::::::::::::::::::::::");
+		System.out.println(memberRequest);
 
 		if (memberRequest == null) {
 			map.put("result", "바르게 입력하세요.");
@@ -170,10 +173,10 @@ public class MemberController {
 
 		
 		//user가 입력한 password 확인
-		if (memberRequest.getPassword() == null || memberRequest.getPassword().isEmpty()) {
-			map.put("result", "비밀번호를 바르게 입력하세요.");
-			return ResponseEntity.badRequest().body(map);
-		}
+		//if (memberRequest.getPassword() == null || memberRequest.getPassword().isEmpty()) {
+		//	map.put("result", "비밀번호를 바르게 입력하세요.");
+		//	return ResponseEntity.badRequest().body(map);
+		//}
 
 		//user가 입력한 phonenum 확인
 		if (memberRequest.getPhonenum() == null || memberRequest.getPhonenum().equals("")) {
@@ -195,6 +198,9 @@ public class MemberController {
 		
 		
 		MemberDTO memberDTO = MemberDTO.toMemberDTO(memberRequest);
+		
+		System.out.println("memberDTO 수정2222222222::::::::::::::");
+		System.out.println(memberDTO);
 		
 
 		try {
@@ -284,10 +290,16 @@ public class MemberController {
 	//회원가입
 	@PostMapping("/members")
 	public ResponseEntity<?> createMember(@RequestBody MemberRequest memberRequest) {
+		System.out.println("memberDTO 회원가입::::::::::::::");
+		System.out.println("회원가입이 들어오나?"+ memberRequest);
 		MemberDTO memberDTO = MemberDTO.toMemberDTO(memberRequest); //req -> dto
 		
 		memberDTO = memberService.createMember(memberDTO); //dto -> entity
+		System.out.println("memberDTO 회원가입::::::::::::::");
+		System.out.println(memberDTO);
 		MemberResponse memberResponse = memberDTO.toMemberResponse();
+		
+
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(memberResponse);
 	}

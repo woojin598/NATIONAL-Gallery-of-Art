@@ -34,6 +34,9 @@ public class MemberEntity implements Serializable {
 	@Column(nullable = false, unique = true)
 	private String username;
 	
+	@Column(nullable = false)
+	private String gender;
+	
 	@Column(nullable = false, unique = true)
 	private String email;
 
