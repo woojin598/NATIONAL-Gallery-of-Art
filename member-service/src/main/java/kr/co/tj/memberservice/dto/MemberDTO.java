@@ -19,6 +19,8 @@ public class MemberDTO implements Serializable {
 	private String id;
 
 	private String username;// 사용자 실제 아이디
+	
+	private String gender;
 
 	private String name;
 
@@ -51,6 +53,7 @@ public class MemberDTO implements Serializable {
 		this.id = memberEntity.getId();
 		this.username = memberEntity.getUsername();
 		this.name = memberEntity.getName();
+		this.gender = memberEntity.getGender();
 		this.email = memberEntity.getEmail();
 		this.phonenum = memberEntity.getPhonenum();
 		this.address = memberEntity.getAddress();
@@ -69,6 +72,7 @@ public class MemberDTO implements Serializable {
 				.id(id)
 				.username(username)
 				.name(name)
+				.gender(gender)
 				.email(email)
 				.phonenum(phonenum)
 				.address(address)
@@ -83,6 +87,7 @@ public class MemberDTO implements Serializable {
 		return MemberDTO.builder()
 				.username(memberRequest.getUsername())
 				.name(memberRequest.getName())
+				.gender(memberRequest.getGender())
 				.email(memberRequest.getEmail())
 				.phonenum(memberRequest.getPhonenum())
 				.address(memberRequest.getAddress())

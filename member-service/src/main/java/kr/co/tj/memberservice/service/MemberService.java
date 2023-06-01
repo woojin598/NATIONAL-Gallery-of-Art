@@ -116,6 +116,8 @@ public class MemberService {
 
 	
 
+	// 회원정보 수정 화면 전 비밀번호 확인
+	
 	
 	
 	//회원정보 수정
@@ -127,16 +129,18 @@ public class MemberService {
 			throw new RuntimeException("회원 정보가 잘못됐습니다..");
 		}
 		
-		if(!passwordEncoder.matches(memberDTO.getPassword(), memEntity.getPassword())) {
-			throw new RuntimeException("비밀번호가 틀렸습니다.");
-		}
+//		if(!passwordEncoder.matches(memberDTO.getPassword(), memEntity.getPassword())) {
+//			throw new RuntimeException("비밀번호가 틀렸습니다.");
+//		}
 		
 		memEntity.setName(memberDTO.getName());
 		memEntity.setEmail(memberDTO.getEmail());
-		memEntity.setPassword(passwordEncoder.encode(memberDTO.getPassword()));
+		//memEntity.setPassword(passwordEncoder.encode(memberDTO.getPassword())); // 비밀번호 따로 구현
 		memEntity.setPhonenum(memberDTO.getPhonenum());
 		memEntity.setAddress(memberDTO.getAddress());
 		memEntity.setUpdateAt(new Date());
+		
+		memEntity.getPassword();
 
 		memEntity = memberRepository.save(memEntity);
 		
@@ -226,6 +230,7 @@ public class MemberService {
 				MemberEntity.getId(),
 				MemberEntity.getUsername(),
 				MemberEntity.getName(),
+				MemberEntity.getGender(),
 				MemberEntity.getEmail(),
 				MemberEntity.getPhonenum(),
 				MemberEntity.getAddress(),
