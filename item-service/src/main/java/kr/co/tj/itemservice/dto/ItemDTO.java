@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 public class ItemDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
+	private Long id;
 
 	private String artist;
 
@@ -30,6 +32,7 @@ public class ItemDTO implements Serializable{
 	
 	public ItemEntity toItemEntity() {
 		 return ItemEntity.builder()
+				 .id(id)
 				.artist(artist)
 				.title(title)
 				.itemDescribe(itemDescribe)
@@ -53,6 +56,7 @@ public class ItemDTO implements Serializable{
 	public ItemResponse toItemResponse() {
 		
 		return ItemResponse.builder()
+				.id(id)
 				.artist(artist)
 				.title(title)
 				.itemDescribe(itemDescribe)
@@ -65,6 +69,7 @@ public class ItemDTO implements Serializable{
 	
 	public static ItemDTO toItemDTO(ItemEntity entity) {
 	    ItemDTO dto = new ItemDTO();
+	    dto.setId(entity.getId());
 	    dto.setArtist(entity.getArtist());
 	    dto.setTitle(entity.getTitle());
 	    dto.setItemDescribe(entity.getItemDescribe());

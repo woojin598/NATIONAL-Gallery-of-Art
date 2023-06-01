@@ -32,19 +32,19 @@ public class ItemService {
 	private ReplyFeign replyFeign;
 		
 	public ItemDTO createItem(ItemDTO itemDTO) {
-		
-		String itemId = itemDTO.getTitle();
-		
-		itemDTO.setTitle(itemId);
-		
-		itemDTO.setCreateDate(new Date());
-		
-		ItemEntity itemEntity = itemDTO.toItemEntity();		
-		
-		itemEntity = itemRepository.save(itemEntity);
-		
-		return itemDTO;
-	}
+	      
+        
+	      itemDTO.setCreateDate(new Date());
+	      itemDTO.setUpdateDate(new Date());
+	      
+	      ItemEntity itemEntity = itemDTO.toItemEntity();   
+	      
+	      itemEntity = itemRepository.save(itemEntity);
+	      
+	      itemDTO = ItemDTO.toItemDTO(itemEntity);
+	      
+	      return itemDTO;
+	   }
 	
 	@Transactional
 	public ItemDTO update(ItemDTO dto) {
@@ -107,7 +107,9 @@ public class ItemService {
 	      Pageable pageable = (Pageable) PageRequest.of(page, 9, Sort.by(sortList));
 	      Page<ItemEntity> page_member = itemRepository.findAll(pageable);
 	      Page<ItemDTO> page_dto = page_member.map(itemEntity -> 
-	      new ItemDTO(itemEntity.getArtist(), 
+	      new ItemDTO(
+	    		  itemEntity.getId(),
+	    		  itemEntity.getArtist(), 
 	    		  itemEntity.getTitle(), 
 	    		  itemEntity.getItemDescribe(),
 	    		  itemEntity.getPrice(),
