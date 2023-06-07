@@ -24,7 +24,7 @@ public class MemberServiceApplication {
 	} 
 	
 	@Bean
-	@LoadBalanced
+	@LoadBalanced//RestTemplate 사용-> orders
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}

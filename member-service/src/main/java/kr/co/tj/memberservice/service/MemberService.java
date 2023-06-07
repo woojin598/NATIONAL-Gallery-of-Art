@@ -7,22 +7,31 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
+import org.springframework.web.client.RestTemplate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+
 import kr.co.tj.memberservice.dto.MemberDTO;
 import kr.co.tj.memberservice.dto.MemberEntity;
 import kr.co.tj.memberservice.dto.MemberUpdatePasswdRequest;
 import kr.co.tj.memberservice.jpa.MemberRepository;
 import kr.co.tj.memberservice.sec.TokenProvider;
+import kr.co.tj.memberservice.dto.OrderResponse;
 
 
 @Service
 public class MemberService {
+	
+	@Autowired
+	private Environment env; //order를 가져오기위해.
 
 	
 	@Autowired
@@ -32,16 +41,61 @@ public class MemberService {
 	private TokenProvider tokenProvider;
 	
 	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder; 
 	
+	
+	
+	
 
+	//주문목록
+	public MemberDTO getOrders(String username) {
+
+		MemberEntity memberEntity = memberRepository.findByUsername(username);//username을 가져옴
+		
+		if(memberEntity == null) {
+			throw new RuntimeException("존재하지 않는 사용입니다.");
+		}
+
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = memberDTO.toMemberDTO(memberEntity); //db의 username을 dto로 변환
+		
+		// 1. 서비스간의 통신: feign 이용해서 통신한 코드
+		//List<OrderResponse> orderList = orderFeign.getOrdersByUsername(username);
+			
+		System.out.println("오더의url을 확인합니다!!!!!!!!!!"+env.getProperty("data.url"));
+		
+		// 2. 서비스간의 통신: RestTemplate 이용해서 통신		
+		String orderUrl = String.format(env.getProperty("data.url"),username);//order의 url를 통해 username을 가져옴.
+		ResponseEntity<List<OrderResponse>> result = restTemplate.exchange(orderUrl, 
+																	HttpMethod.GET, 
+																	null, 
+							new ParameterizedTypeReference<List<OrderResponse>>() {
+		});
+		
+		
+		List<OrderResponse> orderList = result.getBody();
+			
+		memberDTO.setOrderList(orderList);
+		memberDTO.setToken("");
+		memberDTO.setRole("");
+		memberDTO.setId("");
+		memberDTO.setCreateAt(null);
+		memberDTO.setUpdateAt(null);
+		memberDTO.setPassword("");	
+					
+		return memberDTO;
+	}
 
 	
 	
 	//회원가입
 	@Transactional
 	public MemberDTO createMember(MemberDTO memberDTO) {
-		memberDTO = getDate(memberDTO);
+		memberDTO = getDate(memberDTO); //시간추가
+		memberDTO = resolveRole(memberDTO);//권한추가
 		MemberEntity memberEntity = memberDTO.toMemberEntity();// dto -> entity로 변환
 		memberEntity.setPassword( passwordEncoder.encode(memberEntity.getPassword()) ); //패스워드 암호화
 		memberEntity = memberRepository.save(memberEntity); // 암호화한 정보를 DB에 저장
@@ -70,9 +124,17 @@ public class MemberService {
 		memberDTO.setUpdateAt(date);
 		return memberDTO;
 	}
-
-
 	
+	
+	
+	//회원가입, 회원수정(기본 user 권한부여)
+	private MemberDTO resolveRole(MemberDTO memberDTO) {
+	    if (memberDTO.getRole() == null) {
+	        memberDTO.setRole("ROLE_USER");
+	    }
+	    return memberDTO;
+	}
+
 	
 	//로그인
 	@Transactional
@@ -83,24 +145,28 @@ public class MemberService {
 		if(memberEntity == null) {
 			return null;
 		}
-		
+				
 		if(!passwordEncoder.matches(memberDTO.getPassword(), memberEntity.getPassword())) {
 			return null;
 		}
 		
+		
 		String token = tokenProvider.create(memberEntity);//토큰생성(서버에 저장)
+		
+		
+		//db에 로그인 시 발행되는 token과 role값 추가하기
+		memberEntity.setToken(token);
+		memberEntity = memberRepository.save(memberEntity);
+
 		memberDTO = memberDTO.toMemberDTO(memberEntity);
 		memberDTO.setToken(token); // dto에 token삽입
+		memberDTO.getRole();; // dto에 role삽입
 		memberDTO.setId("");
 		memberDTO.setPassword("");
 
 		return memberDTO; //id, pw를 null, 토큰값 반환
 	}
 
-	
-	
-	
-	
 	//회원정보 자세히 보기
 	@Transactional
 	public MemberDTO findByUsername(String username) {
@@ -218,7 +284,7 @@ public class MemberService {
 	}
 	
 	
-	@Transactional
+	@Transactional//페이징
 	public Page<MemberDTO> findAll(int page) {
 		List<Sort.Order> sortList = new ArrayList<>();
 		sortList.add(Sort.Order.desc("id"));
@@ -239,23 +305,12 @@ public class MemberService {
 				null,
 				MemberEntity.getCreateAt(),
 				MemberEntity.getUpdateAt(),
+				null,
+				MemberEntity.getRole(),
 				null));
 		
 		return page_dto;
 	}
-
-	
-	
-//	@Transactional
-//	public Page<MemberDTO> findAll(int page) {
-//	    Pageable pageable = PageRequest.of(page, 10, Sort.by("id").descending());
-//	    Page<MemberEntity> pageMember = memberRepository.findAll(pageable);
-//	    return pageMember.map(MemberDTO::toMemberDTO);
-//	}
-
-
-    
-
 
 
 
