@@ -1,0 +1,20 @@
+server:
+  port: 8888 #config 서버의 포트번호
+  
+spring:
+  cloud:
+    config:
+      server:
+        git: 
+          uri: https://github.com/woojin598/tj705.git # Config 서버가 Git 저장소를 사용하여 구성 파일을 가져올 수 있도록 설정
+          #file:D:\workspace\tj705_workspace_emsproject\work\git-repo
+           
+  application:
+    name: emsconfig-service #config 서버의 이름
+#  rabbitmq:  #도커생성_busrefrsh_시크릿키통일
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    
+
