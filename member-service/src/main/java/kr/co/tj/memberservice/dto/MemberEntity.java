@@ -2,6 +2,7 @@ package kr.co.tj.memberservice.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.AllArgsConstructor;
@@ -43,7 +45,7 @@ public class MemberEntity implements Serializable {
 	@Column(nullable = false, unique = true)
 	private String phonenum;
 
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String address;
 
 	@Column(nullable = false)
@@ -57,7 +59,7 @@ public class MemberEntity implements Serializable {
 	private Date updateAt;
 	
 	//@ColumnDefault("'ROLE_USER'")
-	//private String role;
+	private String role;
 
 	private String token;
 

@@ -21,7 +21,7 @@ public class MemberRequest { //toMemberDTO
 	private String address;
 
 	private String password;
-	private String password2;
-	private String orgPassword; // 회원정보 수정 전 비밀번호 재확인 구현 예정
+	//private String password2;
+	//private String orgPassword; // 회원정보 수정 전 비밀번호 재확인 구현 예정
 
 }

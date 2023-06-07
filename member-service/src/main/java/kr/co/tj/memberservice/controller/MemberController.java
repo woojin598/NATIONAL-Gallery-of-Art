@@ -24,19 +24,30 @@ import kr.co.tj.memberservice.dto.MemberRequest;
 import kr.co.tj.memberservice.dto.MemberResponse;
 import kr.co.tj.memberservice.dto.MemberUpdatePasswdRequest;
 import kr.co.tj.memberservice.service.MemberService;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/member-service")
+@Slf4j // 로그를 찍게함
 public class MemberController {
-	
+
 	@Autowired
 	private Environment env;
-	
+
 	@Autowired
 	private MemberService memberService;
-	
-	
-	//목록(페이징)
+
+	// 주문목록
+	@GetMapping("{username}/orders")
+	public ResponseEntity<?> getOrders(@PathVariable("username") String username) {
+		MemberDTO memberDTO = memberService.getOrders(username);
+		MemberResponse memberResponse = memberDTO.toMemberResponse();
+
+		return ResponseEntity.status(HttpStatus.OK).body(memberResponse);
+
+	}
+
+	// 목록(페이징)
 	@GetMapping("/list")
 	public ResponseEntity<?> list(int pageNum) {
 		Map<String, Object> map = new HashMap<>();
@@ -45,10 +56,9 @@ public class MemberController {
 
 		return ResponseEntity.ok().body(map);
 	}
-	
-	
-	//목록
-	@GetMapping("/all")	
+
+	// 목록
+	@GetMapping("/all")
 	public ResponseEntity<?> findAll() {
 		Map<String, Object> map = new HashMap<>();
 
@@ -64,10 +74,8 @@ public class MemberController {
 		}
 	}
 
-	
-    
-	//삭제
-	@DeleteMapping("/delete")
+	// 삭제
+	@DeleteMapping("member/delete")
 	public ResponseEntity<?> delete(@RequestBody MemberDTO dto) {
 		Map<String, Object> map = new HashMap<>();
 
@@ -89,40 +97,37 @@ public class MemberController {
 		}
 	}
 
-	
-	//비밀번호 수정
-	@PutMapping("/updatePasswd")
+	// 비밀번호 수정
+	@PutMapping("member/updatePasswd")
 	public ResponseEntity<?> updatePasswd(@RequestBody MemberUpdatePasswdRequest updatePasswdRequest) {
 		Map<String, Object> map = new HashMap<>();
 
-		//user가 입력한 [기존] password 확인
+		// user가 입력한 [기존] password 확인
 		if (updatePasswdRequest.getOrgPassword() == null || updatePasswdRequest.getOrgPassword().isEmpty()) {
 			map.put("result", "비밀번호를 바르게 입력하세요.1");
 			return ResponseEntity.badRequest().body(map);
 		}
-		
-		//user가 입력한 [신규] password 확인
+
+		// user가 입력한 [신규] password 확인
 		if (updatePasswdRequest.getPassword() == null || updatePasswdRequest.getPassword().isEmpty()) {
 			map.put("result", "비밀번호를 바르게 입력하세요.2");
 			return ResponseEntity.badRequest().body(map);
 		}
-		
-		
-		//user가 입력한 [신규] password 확인
+
+		// user가 입력한 [신규] password 확인
 		if (updatePasswdRequest.getPassword2() == null || updatePasswdRequest.getPassword2().isEmpty()) {
 			map.put("result", "비밀번호를 바르게 입력하세요.3");
 			return ResponseEntity.badRequest().body(map);
 		}
-		
-		//user가 입력한 [신규] password 확인
+
+		// user가 입력한 [신규] password 확인
 		if (!updatePasswdRequest.getPassword().equals(updatePasswdRequest.getPassword2())) {
 			map.put("result", "비밀번호를 바르게 입력하세요.4");
 
 			return ResponseEntity.badRequest().body(map);
 		}
-		
 
-		//user가 입력한 [신규] password 확인
+		// user가 입력한 [신규] password 확인
 		if (updatePasswdRequest.getPassword() == updatePasswdRequest.getOrgPassword()) {
 			map.put("result", "기존 비밀번호와 동일합니다.5");
 			return ResponseEntity.badRequest().body(map);
@@ -130,14 +135,12 @@ public class MemberController {
 
 		System.out.println(updatePasswdRequest);
 
-		//MemberDTO memberDTO = MemberDTO.toMemberDTOPasswd(updatePasswdRequest);
-		
-		//System.out.println(memberDTO);
-		
+		// MemberDTO memberDTO = MemberDTO.toMemberDTOPasswd(updatePasswdRequest);
+		// System.out.println(memberDTO);
 
 		try {
 			MemberDTO memberDTO = new MemberDTO();
-			memberDTO = memberService.updatePasswd(updatePasswdRequest); //memberRequest 수정한 값을 다시 변수에 담음.
+			memberDTO = memberService.updatePasswd(updatePasswdRequest); // memberRequest 수정한 값을 다시 변수에 담음.
 			map.put("result", memberDTO);
 
 			return ResponseEntity.ok().body(map);
@@ -149,59 +152,49 @@ public class MemberController {
 			return ResponseEntity.badRequest().body(map);
 		}
 	}
-	
- 
-	
-	//회원정보 수정logs/productid
-	@PutMapping("/update")
+
+	// 회원정보 수정logs/productid
+	@PutMapping("member/update")
 	public ResponseEntity<?> update(@RequestBody MemberRequest memberRequest) {
 		Map<String, Object> map = new HashMap<>();
-		
-		System.out.println("memberRequest:::::::::::::::::::::::");
-		System.out.println(memberRequest);
 
 		if (memberRequest == null) {
 			map.put("result", "바르게 입력하세요.");
 			return ResponseEntity.badRequest().body(map);
 		}
 
-		//user가 입력한 name(id)확인
+		// user가 입력한 name(id)확인
 		if (memberRequest.getName() == null) {
 			map.put("result", "id를 바르게 입력하세요.");
 			return ResponseEntity.badRequest().body(map);
 		}
 
-		
-		//user가 입력한 password 확인
-		//if (memberRequest.getPassword() == null || memberRequest.getPassword().isEmpty()) {
-		//	map.put("result", "비밀번호를 바르게 입력하세요.");
-		//	return ResponseEntity.badRequest().body(map);
-		//}
+		// user가 입력한 password 확인
+		// if (memberRequest.getPassword() == null ||
+		// memberRequest.getPassword().isEmpty()) {
+		// map.put("result", "비밀번호를 바르게 입력하세요.");
+		// return ResponseEntity.badRequest().body(map);
+		// }
 
-		//user가 입력한 phonenum 확인
+		// user가 입력한 phonenum 확인
 		if (memberRequest.getPhonenum() == null || memberRequest.getPhonenum().equals("")) {
 			map.put("result", "연락처를 바르게 입력하세요.");
 			return ResponseEntity.badRequest().body(map);
 		}
-		
-		//user가 입력한 email 확인
+
+		// user가 입력한 email 확인
 		if (memberRequest.getEmail() == null || memberRequest.getEmail().equals("")) {
 			map.put("result", "e-mail을 바르게 입력하세요.");
 			return ResponseEntity.badRequest().body(map);
 		}
 
-		//user가 입력한 address 확인
+		// user가 입력한 address 확인
 		if (memberRequest.getAddress() == null || memberRequest.getAddress().equals("")) {
 			map.put("result", "주소를 바르게 입력하세요.");
 			return ResponseEntity.badRequest().body(map);
 		}
-		
-		
+
 		MemberDTO memberDTO = MemberDTO.toMemberDTO(memberRequest);
-		
-		System.out.println("memberDTO 수정2222222222::::::::::::::");
-		System.out.println(memberDTO);
-		
 
 		try {
 			memberDTO = memberService.update(memberDTO);
@@ -217,9 +210,7 @@ public class MemberController {
 		}
 	}
 
-	
-	
-	//회원정보 자세히보기	
+	// 회원정보 자세히보기
 	@GetMapping("/name/{username}")
 	public ResponseEntity<?> findByUsername(@PathVariable("username") String username) {
 		Map<String, Object> map = new HashMap<>();
@@ -241,75 +232,60 @@ public class MemberController {
 		}
 	}
 
-	
-
-	
-	//로그인
-	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody MemberLoginRequest memberLoginRequest){
+	// 로그인
+	@PostMapping("all/login")
+	public ResponseEntity<?> login(@RequestBody MemberLoginRequest memberLoginRequest) {
 		Map<String, Object> map = new HashMap<>();
-		
 
-		if(memberLoginRequest.getUsername() == null || memberLoginRequest.getUsername().isEmpty()) {
+		if (memberLoginRequest.getUsername() == null || memberLoginRequest.getUsername().isEmpty()) {
 			map.put("result", "id를 바르게 입력하세요.");
-			return ResponseEntity.ok().body(map);			
+			return ResponseEntity.ok().body(map);
 		}
-		
-		if(memberLoginRequest.getPassword() ==null || memberLoginRequest.getPassword().isEmpty()) {
+
+		if (memberLoginRequest.getPassword() == null || memberLoginRequest.getPassword().isEmpty()) {
 			map.put("result", "비밀번호를 바르게 입력하세요.");
-			return ResponseEntity.ok().body(map);			
+			return ResponseEntity.ok().body(map);
 		}
-		
-		MemberDTO memberDTO = MemberDTO.toMemberDTO(memberLoginRequest); //dto로 변환
-		
-		memberDTO = memberService.login(memberDTO); 
-		
+
+		MemberDTO memberDTO = MemberDTO.toMemberDTO(memberLoginRequest); // dto로 변환
+		memberDTO = memberService.login(memberDTO);
 		map.put("result", memberDTO);
-		
-		if(memberDTO == null) {
+
+		if (memberDTO == null) {
 			map.put("result", "사용자명이나 비밀번호가 잘못 되었습니다.");
 			return ResponseEntity.ok().body(map);
-			}
-		
-		MemberResponse memberResponse = memberDTO.toMemberResponse();		
+		}
+
+		MemberResponse memberResponse = memberDTO.toMemberResponse();
 		map.put("result", memberResponse);
 
-		return ResponseEntity.ok().body(map);	
+		return ResponseEntity.ok().body(map);
 	}
-	
-	
+
 	@GetMapping("/test")
-	public ResponseEntity<?> test(){
-		System.out.println(":::::::::::::::잘될ㄲ?::::::로그인 하고 토큰 첨부해야 하는데::::::::::");
-		
+	public ResponseEntity<?> test() {
+		System.out.println("토큰 첨부용 test 메서드 입니다..");
+
 		return ResponseEntity.status(HttpStatus.OK).body(new MemberResponse());
 	}
-	
-	
-	
-	//회원가입
-	@PostMapping("/members")
-	public ResponseEntity<?> createMember(@RequestBody MemberRequest memberRequest) {
-		System.out.println("memberDTO 회원가입::::::::::::::");
-		System.out.println("회원가입이 들어오나?"+ memberRequest);
-		MemberDTO memberDTO = MemberDTO.toMemberDTO(memberRequest); //req -> dto
-		
-		memberDTO = memberService.createMember(memberDTO); //dto -> entity
-		System.out.println("memberDTO 회원가입::::::::::::::");
-		System.out.println(memberDTO);
-		MemberResponse memberResponse = memberDTO.toMemberResponse();
-		
 
-		
+	// 회원가입
+	@PostMapping("all/members")
+	public ResponseEntity<?> createMember(@RequestBody MemberRequest memberRequest) {
+		MemberDTO memberDTO = MemberDTO.toMemberDTO(memberRequest); // req -> dto
+
+		memberDTO = memberService.createMember(memberDTO); // dto -> entity
+		MemberResponse memberResponse = memberDTO.toMemberResponse();
+
 		return ResponseEntity.status(HttpStatus.CREATED).body(memberResponse);
 	}
-	
-	
+
 	@GetMapping("/health_check")
 	public String status() {
-		return "user service입니다"+env.getProperty("local.server.port");
+		log.info("data odrders: {}", env.getProperty("data.url")); // 오더의 url 확인중
+
+		return "member-service입니다" + env.getProperty("local.server.port");
+
 	}
-	
-	
 
 }

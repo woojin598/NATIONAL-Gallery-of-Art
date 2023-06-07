@@ -2,6 +2,8 @@ package kr.co.tj.memberservice.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,11 +37,15 @@ public class MemberDTO implements Serializable {
 	private Date createAt;
 
 	private Date updateAt;
+	
+	private List<OrderResponse> orderList;
+	
+	private String role;
 
 	private String token;
 	
 
-	
+
 	// 회원정보수정(비밀번호)
 	public static MemberDTO toMemberDTOPasswd(MemberUpdatePasswdRequest updatePasswdRequest) {
 		return MemberDTO.builder()
@@ -59,6 +65,7 @@ public class MemberDTO implements Serializable {
 		this.address = memberEntity.getAddress();
 		this.createAt = memberEntity.getCreateAt();
 		this.updateAt = memberEntity.getUpdateAt();
+		this.role = memberEntity.getRole();
 		this.token = memberEntity.getToken();
 
 		return this;
@@ -79,6 +86,8 @@ public class MemberDTO implements Serializable {
 				.password(password)
 				.createAt(createAt)
 				.updateAt(updateAt)
+				.role(role)
+				.token(token)
 				.build();
 	}
 
@@ -102,7 +111,9 @@ public class MemberDTO implements Serializable {
 				.name(name)
 				.createAt(createAt)
 				.updateAt(updateAt)
+				.orderList(orderList)
 				.token(token)
+				.role(role)
 				.build();
 	}
 
@@ -122,6 +133,7 @@ public class MemberDTO implements Serializable {
 				.password(updatePasswdRequest.getPassword())
 				.build();
 	}
+
 
 
 

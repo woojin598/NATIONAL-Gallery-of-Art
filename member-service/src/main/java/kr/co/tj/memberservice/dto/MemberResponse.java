@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,7 +29,11 @@ public class MemberResponse implements Serializable{
    
    private Date updateAt;
    
+   private List<OrderResponse> orderList;
+   
    private String token;
+
+   private String role;
       
    
 }

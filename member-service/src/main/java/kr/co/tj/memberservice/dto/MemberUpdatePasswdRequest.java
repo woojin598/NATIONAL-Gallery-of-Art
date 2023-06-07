@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MemberUpdatePasswdRequest{ //로그인 시 받을 정보
+public class MemberUpdatePasswdRequest{ //비밀번호 수정
 
 	private String username;
 	private String password;
