@@ -28,6 +28,8 @@ public class ReplyDTO implements Serializable {
 	private Date createDate;
 	
 	private Date updateDate;
+	
+	private String role;
 
 	public static ReplyDTO toReplyDTO(ReplyRequest replyRequest) {
 		 
@@ -41,6 +43,7 @@ public class ReplyDTO implements Serializable {
 	public ReplyResponse toReplyResponse() {
 		// TODO Auto-generated method stub
 		return ReplyResponse.builder()
+				.id(id)
 				.bid(bid)
 				.username(username)
 				.comment(comment)
@@ -71,5 +74,18 @@ public class ReplyDTO implements Serializable {
 				.updateDate(replyEntity.getUpdateDate())				
 				.build();
 	}
+
+	public ReplyDTO toReplyDTO(ReplyEntity replyEntity) {
+		   this.id = replyEntity.getId();
+		    this.bid = replyEntity.getBid();
+		    this.username = replyEntity.getUsername();
+		    this.comment = replyEntity.getComment();
+		    this.createDate = replyEntity.getCreateDate();
+		    this.updateDate = replyEntity.getUpdateDate();
+		    this.role = replyEntity.getRole();
+		    
+		    return this;
+	}
+	
 
 }
