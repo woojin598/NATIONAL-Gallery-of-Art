@@ -54,7 +54,7 @@ DELETE - Item-service/delete [상품삭제] SEC : YES, Roles : ADMIN
 
 Order
 
-GET - Order-service/orders/user/{username} [주문 확인] SEC : NO, Roles : ALL
+GET - Order-service/orders/detail/{username} [주문 확인] SEC : NO, Roles : ALL
 POST - Order-service/orders [주문 생성] SEC : YES, Roles : ALL
 PUT -  Order-service/orders/edit [주문 수정] SEC : YES , Roles : ALL
 DELETE - orders/delete/{id} [주문 삭제] SEC : YES, Roles : ALL
