@@ -2,9 +2,14 @@ package kr.co.tj.memberservice.service;
 
 import java.util.Date;
 
+import javax.transaction.Transactional;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionalEventListener;
+
 import kr.co.tj.memberservice.dto.MemberDTO;
 import kr.co.tj.memberservice.dto.MemberEntity;
 import kr.co.tj.memberservice.jpa.MemberRepository;
@@ -69,6 +74,17 @@ public class MemberService {
 		return memberDTO; //password: null로 반환
 	}
 
+	@Transactional
+	public MemberDTO findByUsername(String username) {
+
+		MemberEntity entity = memberRepository.findByUsername(username);
+
+		MemberDTO dto = new ModelMapper().map(entity, MemberDTO.class);
+		dto.setId(null);
+		dto.setPassword(null);
+
+		return dto;
+	}
 
 
 }

@@ -30,7 +30,26 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	
+	@GetMapping("/name/{username}")
+	public ResponseEntity<?> findByUsername(@PathVariable("username") String username) {
+		Map<String, Object> map = new HashMap<>();
+
+		if (username == null) {
+			map.put("result", "잘못된 정보입니다");
+			return ResponseEntity.badRequest().body(map);
+		}
+
+		try {
+			MemberDTO dto = memberService.findByUsername(username);
+			map.put("result", dto);
+			return ResponseEntity.ok().body(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("result", "조회 실패");
+			return ResponseEntity.badRequest().body(map);
+		}
+		
+		}
 	//로그인
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody MemberLoginRequest memberLoginRequest){
