@@ -1,5 +1,16 @@
 # tj705
 
+Language : Java (v11) - Eclipse , JS(JavaScript) - React (v17.0.2)
+Framework : Spring Boot 2.5.1 - + Spring mvc, Spring Data JPA, Spring Security
+DataBase : PostgreSQL 13.3
+Build Tool : Apache Maven 3.8.1
+Develope Tool : IntelliJ IDEA Ultimate 2021.1, Visual Studio Code 1.57
+Upload : Git (2.40.1.windows.1)
+Use cloud : Eureka 2.3.7 - [NetFlix Eureka]
+
+
+BackEnd (Eclipse Java)
+
 Member
 
 POST - Member/service/members [회원등록] SEC : NO, Roles : ALL
@@ -10,6 +21,8 @@ GET - Member/service/name/{username} [회원 정보 자세히보기)] SEC : YES,
 GET - Member/service/all [회원 목록] SEC : YES, Roles : USER, ADMIN
 POST - Member/service/login [회원 로그인] SEC : NO, Roles : ALL
 - [회원 로그아웃] SEC : YES, Roles : USER, ADMIN (리액트에서 token을 null 예정)
+
+(확인중)
 
 - - - - - - - -
 
