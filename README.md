@@ -30,6 +30,7 @@
 - Use Products / Comments APIs
 - 주요기능(회원관리, 상품관리, 댓글관리, 주문관리)
 - API List
+
 | Endpoint | Description | Secured | Roles |
 | --- | --- | --- | --- |
 | Member | POST | Member-service/members | 회원 등록 |
@@ -59,7 +60,7 @@
 
 ---
 
-- 조장 :김우진(깃주소)
-- 조원 :김도희(깃주소)
-       :김연준(깃주소)
-       :최수진(깃주소)
+- 조장: 김우진(깃주소)
+- 조원: 김도희(깃주소)
+        김연준(깃주소)
+        최수진(깃주소)
