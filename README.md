@@ -1,46 +1,68 @@
-# tj705
+**Exhibition Service - Product API Server**
 
-Member
+---
 
-POST - Member/service/members [회원등록] SEC : NO, Roles : ALL
-PUT - Member/service/update [회원 정보 수정] SEC : YES, Roles : USER
-PUT - Member/service/update [회원 정보 (비밀번호) 수정] SEC : YES, Roles : USER
-DELETE - Member/service/delete [회원 삭제 (탈퇴)] SEC : YES, Roles : USER
-GET - Member/service/name/{username} [회원 정보 자세히보기)] SEC : YES, Roles : USER, ADMIN
-GET - Member/service/all [회원 목록] SEC : YES, Roles : USER, ADMIN
-POST - Member/service/login [회원 로그인] SEC : NO, Roles : ALL
-- [회원 로그아웃] SEC : YES, Roles : USER, ADMIN (리액트에서 token을 null 예정)
+- 개발 인원: 4명
+- 개발기간: 2023.05.01 ~ 2023.00.00
+- 담당역할: 작성예정
+- This app is for study Spring Boot and MSA.
+- This app is Product/Comment API Server.
+- Visit (링크예정)
 
-- - - - - - - -
+**Development environment**
 
-Cart
+---
 
-POST - Cart-service/cart/new [새로운 카드 생성] SEC : - , Roles : -
-GET - Cart-service/cart/list/{id} [아이템명에 따라 카트 목록 조회] SEC : - , Roles : -
-DELETE - Cart-service/cart/delete/{id} [아이템명에 따라 카트에서 아이템제거] SEC : - , Roles : -
-PUT - Cart-service/catalogs/itemname [상품 주문에 따른 재고 업데이트] SEC : - , Roles : -
+- 개발언어: Java(JDK 11), JavaScript
+- 프레임워크: Spring Boot 2.4.2, Spring Cloud 2020.0.0
+- IDE: Eclipse 2022.12 (4.26.0) , Visual Studio Code(1.79.0)
+- 버전 관리 시스템: Git (GitHub)
+- Service Discovery : Eureka 1.10.10
+- Web Application Server: Tomcat 9.0.41
+- 빌드 자동화 도구: Maven 3.1.0
+- 데이터베이스 : h2-console
+- 운영체제: Windows 10
 
-POST - cart/items [장바구니에 아이템 추가] SEC: - , Roles: -
-PUT - cart/items/{itemId} [장바구니 아이템 수정] SEC: - , Roles: -
-DELETE - cart/items/{itemId} [장바구니 특정 아이템 삭제] SEC: - , Roles: -
-GET - cart/items [장바구니 아이템 목록 조회] SEC: - , Roles: -
-DELETE - cart/clear [장바구니 비우기] SEC: - , Roles: -
+**Using this app**
 
-- - - - - - - -
+---
 
-Item
+- Use Products / Comments APIs
+- 주요기능(회원관리, 상품관리, 댓글관리, 주문관리)
+- API List
 
-POST - Item-service/create [상품등록] SEC : YES, Roles : ADMIN
-GET - Item-service/read [상품보기] SEC : NO, Roles : ALL
-GET - Item-service/list [상품목록] SEC : NO, Roles : ALL
-PUT - Item-service/update [상품수정] SEC : YES, Roles : ADMIN
-DELETE - Item-service/delete [상품삭제] SEC : YES, Roles : ADMIN
+| Endpoint | Description | Secured | Roles |
+| --- | --- | --- | --- |
+|  | POST | Member-service/members | 회원 등록 |
+|  | PUT | Member-service/update | 회원 정보 수정 |
+|  | PUT | Member-service/update | 회원 정보(비밀번호) 수정 |
+|  | DELETE | Member-service/delete | 회원 삭제(탈퇴) |
+| Member | GET | Member-service/name/{username} | 회원 정보 자세히보기 |
+|  | GET | Member-service/all | 회원 목록 |
+|  | POST | Member-service/login | 회원 로그인 |
+|  | - | Member-service/logout | 회원 로그아웃 |
+|  | POST | Item-service/create | 상품등록 |
+|  | GET | Item-service/read | 상품보기 |
+| Item | GET | Item-service/list | 상품목록 |
+|  | PUT | Item-service/update | 상품수정 |
+|  | DELETE | Item-service/delete | 상품삭제 |
+|  | GET | Orderservice/orders/detail/{username} | 주문 확인 |
+| Order | POST | Order-service/orders | 주문 생성 |
+|  | PUT | Order-service/orders/edit | 주문 수정 |
+|  | DELETE | orders/delete/{id} | 주문 삭제 |
+|  | GET | reply-service/replys/{id} | 댓글 자세히보기 |
+|  | GET | reply-service/bid | 댓글목록 |
+| Reply | PUT | reply-service/replys/{id} | 댓글수정 |
+|  | POST | reply-service/replys | 댓글작성 |
+|  | DELETE | reply-service/replys/{id} | 댓글삭제 |
 
-- - - - - - - -
+**Contacts**
 
-Order
+---
 
-GET - Order-service/orders/user/{username} [주문 확인] SEC : NO, Roles : ALL
-POST - Order-service/orders [주문 생성] SEC : YES, Roles : ALL
-PUT -  Order-service/orders/edit [주문 수정] SEC : YES , Roles : ALL
-DELETE - orders/delete/{id} [주문 삭제] SEC : YES, Roles : ALL
+- 조장
+- 김우진(깃주소)
+- 조원
+- 김도희(깃주소)
+- 김연준(깃주소)
+- 최수진(깃주소)
