@@ -30,29 +30,28 @@
 - Use Products / Comments APIs
 - 주요기능(회원관리, 상품관리, 댓글관리, 주문관리)
 - API List
-
 | Endpoint | Description | Secured | Roles |
 | --- | --- | --- | --- |
-|  | POST | Member-service/members | 회원 등록 |
+| Member | POST | Member-service/members | 회원 등록 |
 |  | PUT | Member-service/update | 회원 정보 수정 |
 |  | PUT | Member-service/update | 회원 정보(비밀번호) 수정 |
 |  | DELETE | Member-service/delete | 회원 삭제(탈퇴) |
-| Member | GET | Member-service/name/{username} | 회원 정보 자세히보기 |
+|  | GET | Member-service/name/{username} | 회원 정보 자세히보기 |
 |  | GET | Member-service/all | 회원 목록 |
 |  | POST | Member-service/login | 회원 로그인 |
 |  | - | Member-service/logout | 회원 로그아웃 |
-|  | POST | Item-service/create | 상품등록 |
+| Item | POST | Item-service/create | 상품등록 |
 |  | GET | Item-service/read | 상품보기 |
-| Item | GET | Item-service/list | 상품목록 |
+|  | GET | Item-service/list | 상품목록 |
 |  | PUT | Item-service/update | 상품수정 |
 |  | DELETE | Item-service/delete | 상품삭제 |
-|  | GET | Orderservice/orders/detail/{username} | 주문 확인 |
-| Order | POST | Order-service/orders | 주문 생성 |
+| Order | GET | Orderservice/orders/detail/{username} | 주문 확인 |
+|  | POST | Order-service/orders | 주문 생성 |
 |  | PUT | Order-service/orders/edit | 주문 수정 |
 |  | DELETE | orders/delete/{id} | 주문 삭제 |
-|  | GET | reply-service/replys/{id} | 댓글 자세히보기 |
+| Reply | GET | reply-service/replys/{id} | 댓글 자세히보기 |
 |  | GET | reply-service/bid | 댓글목록 |
-| Reply | PUT | reply-service/replys/{id} | 댓글수정 |
+|  | PUT | reply-service/replys/{id} | 댓글수정 |
 |  | POST | reply-service/replys | 댓글작성 |
 |  | DELETE | reply-service/replys/{id} | 댓글삭제 |
 
