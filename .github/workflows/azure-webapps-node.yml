@@ -20,6 +20,11 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '11'
+        server-id: github
+        server-username: GITHUB_ACTOR
+        server-password: GITHUB_TOKEN
+        overwrite-settings: true
+        job-status: success
 
     - name: Set up Maven
       uses: actions/setup-node@v2
@@ -28,7 +33,7 @@ jobs:
 
     - name: Build with Maven
       run: mvn clean install
-      
+
     - name: Docker image build
       run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/item-service .
 
