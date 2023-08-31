@@ -2,9 +2,9 @@
 
 ---
 
-- 개발 인원: 4명
-- 개발기간: 2023.05.01 ~ 2023.00.00
-- 담당역할: 작성예정
+- 개발 인원: 3명
+- 개발기간: 2023.05.01 ~ 2023.06.21
+- 담당역할:  
 - This app is for study Spring Boot and MSA.
 - This app is Product/Comment API Server.
 - Visit (링크예정)
@@ -20,7 +20,7 @@
 - Service Discovery : Eureka 1.10.10
 - Web Application Server: Tomcat 9.0.41
 - 빌드 자동화 도구: Maven 3.1.0
-- 데이터베이스 : h2-console
+- 데이터베이스 : mysql
 - 운영체제: Windows 10
 
 **Using this app**
@@ -46,10 +46,8 @@
 |  | GET | Item-service/list | 상품목록 | NO | ALL |
 |  | PUT | Item-service/update | 상품수정 | YES | ADMIN |
 |  | DELETE | Item-service/delete | 상품삭제 | YES | ADMIN |
-| Order | GET | Orderservice/orders/detail/{username} | 주문 확인 | NO | ALL |
+| Order 
 |  | POST | Order-service/orders | 주문 생성 | YES | ALL |
-|  | PUT | Order-service/orders/edit | 주문 수정 | YES | USER,ADMIN |
-|  | DELETE | orders/delete/{id} | 주문 삭제 | YES | USER,ADMIN |
 | Reply | GET | reply-service/replys/{id} | 댓글 자세히보기 | NO | ALL |
 |  | GET | reply-service/bid | 댓글목록 | NO | ALL |
 |  | PUT | reply-service/replys/{id} | 댓글수정 | YES | USER,ADMIN |
@@ -62,5 +60,4 @@
 
 - 조장/ 김우진(깃주소 첨부예정)
 - 조원/ 김도희(깃주소 첨부예정)
-- 조원/ 김연준(깃주소 첨부예정)
 - 조원/ 최수진(깃주소 첨부예정)
