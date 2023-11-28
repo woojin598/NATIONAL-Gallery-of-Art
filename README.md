@@ -7,7 +7,7 @@
 - 담당역할:  
 - This app is for study Spring Boot and MSA.
 - This app is Product/Comment API Server.
-- Visit (링크예정)
+- [Visit (http://124.49.196.188:28080/) ]
 
 **Development environment**
 
@@ -58,6 +58,6 @@
 
 ---
 
-- 조장/ 김우진(깃주소 첨부예정)
-- 조원/ 김도희(깃주소 첨부예정)
-- 조원/ 최수진(깃주소 첨부예정)
+- 조장/ 김우진
+- 조원/ 김도희
+- 조원/ 최수진
