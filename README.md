@@ -11,20 +11,6 @@ GET - Member/service/all [회원 목록] SEC : YES, Roles : USER, ADMIN
 POST - Member/service/login [회원 로그인] SEC : NO, Roles : ALL
 - [회원 로그아웃] SEC : YES, Roles : USER, ADMIN (리액트에서 token을 null 예정)
 
-- - - - - - - -
-
-Cart
-
-POST - Cart-service/cart/new [새로운 카드 생성] SEC : - , Roles : -
-GET - Cart-service/cart/list/{id} [아이템명에 따라 카트 목록 조회] SEC : - , Roles : -
-DELETE - Cart-service/cart/delete/{id} [아이템명에 따라 카트에서 아이템제거] SEC : - , Roles : -
-PUT - Cart-service/catalogs/itemname [상품 주문에 따른 재고 업데이트] SEC : - , Roles : -
-
-POST - cart/items [장바구니에 아이템 추가] SEC: - , Roles: -
-PUT - cart/items/{itemId} [장바구니 아이템 수정] SEC: - , Roles: -
-DELETE - cart/items/{itemId} [장바구니 특정 아이템 삭제] SEC: - , Roles: -
-GET - cart/items [장바구니 아이템 목록 조회] SEC: - , Roles: -
-DELETE - cart/clear [장바구니 비우기] SEC: - , Roles: -
 
 - - - - - - - -
 
@@ -44,3 +30,12 @@ GET - Order-service/orders/user/{username} [주문 확인] SEC : NO, Roles : ALL
 POST - Order-service/orders [주문 생성] SEC : YES, Roles : ALL
 PUT -  Order-service/orders/edit [주문 수정] SEC : YES , Roles : ALL
 DELETE - orders/delete/{id} [주문 삭제] SEC : YES, Roles : ALL
+
+- - - - - - - -
+
+Reply
+
+GET - Reply-service//{id} [댓글 확인] SEC : NO, Roles : ALL
+POST - Reply-service/orders [댓글 생성] SEC : YES, Roles : ALL
+PUT -  Reply-service/replys/{id} [댓글 수정] SEC : YES , Roles : ALL
+DELETE - Reply-service/replys/{id} [댓글 삭제] SEC : YES, Roles : ALL
