@@ -3,10 +3,11 @@
 ---
 
 - 개발 인원: 3명
-- 개발기간: 2023.05.01 ~ 2023.06.21
+- 개발기간: 약 2달
 - 담당역할:  
-- This app is for study Spring Boot and MSA.
-- This app is Product/Comment API Server.
+김우진: 댓글,아이템 의 프론트 와 백엔드
+최수진: 멤버 의 프론트와 백엔드
+김도희: 전체적인 디자인
 - [Visit (http://124.49.196.188:28080/) ]
 
 **Development environment**
