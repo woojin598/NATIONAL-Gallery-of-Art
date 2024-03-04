@@ -1,0 +1,135 @@
+/* MemberUpdatePasswd.module.css */
+
+
+
+/* 프로필 수정 컨테이너 스타일 */
+.updateContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 프로필 수정 제목 스타일 */
+.updateTitle {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--title-gray);
+}
+
+/* 입력 그룹 간격 */
+.formGroup {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.formGroupButton {
+  display: flex;
+  justify-content: center; /* 추가된 부분 */
+}
+
+
+/* 입력 필드 스타일 */
+.inputField {
+  flex: 1;
+  height: 100%;
+  width: 70%; /* 조절 가능한 너비 값 */
+  max-width: 600px; /* 최대 너비 값 */
+  padding: 20px;
+  outline: none;
+  background-color: #ffffff;
+  color: #333;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+/* 입력 필드 플레이스홀더 스타일 */
+.inputField::placeholder {
+  color: var(--gray-07);
+}
+
+
+.formTitle {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--title-gray);
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 8px;
+  width: 180px;
+}
+
+.submitButton {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  padding: 1.675rem 0;
+  width: 16.7rem;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.submitButton:hover {
+  background-color: #2e2e2e;
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.goToPasswordTabButton {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #333;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 20px;
+  width: 70%;
+  max-width: 150px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.goToPasswordTabButton:hover {
+  background-color: #2e2e2e;
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.goToPasswordTabLink {
+  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Roboto", Segoe UI, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  border-width: 0;
+  font-size: 1.255em;
+  display: block;
+  float: none;
+  margin-left: 0;
+  color: #888888;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.goToPasswordTabLink:hover {
+  color: #dedede;
+}

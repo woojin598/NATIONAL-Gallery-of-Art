@@ -1,0 +1,103 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+
+.reply-block {
+    border: none;
+    padding: 0;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.reply-block:first-child {
+    border-top: none;
+}
+
+.reply-block:last-child {
+    border-bottom: none;
+}
+
+.reply-block p {
+    margin: 5px 0;
+}
+
+.reply-block a {
+    margin-right: 10px;
+}
+
+.reply-list-container {
+    text-align: center;
+    /* 가운데 정렬 */
+}
+
+.reply-list-container .reply-block {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.reply-list-container .reply-block p {
+    margin: 0;
+}
+
+.reply-list-container .reply-block p:last-child {
+    font-size: 12px;
+}
+
+.reply-list-container .reply-block a,
+.reply-list-container .reply-block button {
+    margin-left: 10px;
+}
+
+.replyer-info {
+    display: flex;
+    align-items: center;
+}
+
+.replyer-detail-info {
+    margin-left: 10px;
+}
+
+.replyer-name {
+    font-weight: bold;
+}
+
+.reply-contents {
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.reply-text {
+    margin-left: 10px;
+}
+
+.reply-option {
+    font-size: 18px;
+    margin-top: 100px;
+}
+
+.reply-option strong {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.reply-block .action-buttons {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.reply-block .action-buttons>* {
+    margin-left: 10px;
+}
+
+.comment-input {
+    width: 800px;
+    /* 원하는 길이로 조절하세요 */
+}

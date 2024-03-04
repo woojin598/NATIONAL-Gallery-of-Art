@@ -1,0 +1,404 @@
+@font-face {
+  font-family: 'Nanum';
+  /* 원하는 폰트 이름 설정 */
+  src: url('../../assets/NanumSquareNeoTTF-bRg.woff2') format('woff2'),
+      url('../../assets/NanumSquareNeoTTF-bRg.woff') format('woff');
+}
+
+/* MemberLogin.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Nanum, sans-serif;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  background-color: #333;
+  /* 배경색 추가 */
+}
+
+/* 로그인탭 */
+.login_wrap .login_tabs {
+    margin-bottom: 20px;
+  }
+  
+  .login_wrap .login_tabs .nav-link {
+    position: relative;
+    padding: 12px 20px;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    color: #333;
+    background-color: #f6f6f6;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-size: 16px; /* 추가: 원하는 폰트 사이즈로 조정 */
+    font-family: Nanum, sans-serif;
+  }
+  
+  .login_wrap .login_tabs .nav-link.active {
+    background-color: #fff;
+    border-color: #ccc;
+  }
+  
+  .login_wrap .login_tabs .nav-link:before {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #fd7e14;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  
+  .login_wrap .login_tabs .nav-link.active:before {
+    transform: scaleX(1);
+  }
+  
+  .login_wrap .login_tabs .nav-link:hover {
+    background-color: #fff;
+    border-color: #ccc;
+  }
+  
+  .login_wrap .login_tabs .nav-link:hover:before {
+    transform: scaleX(1);
+  }
+
+/* 로그인 */
+.login_wrap {
+    max-width: 800px;
+    max-height: 800px; /* 원하는 높이로 조절 */
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #f6f6f6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  }
+
+    /* 아이디, 비번 입력란 */
+    .loginID {
+      height: 50px;
+      font-size: 16px; /* 추가: 원하는 폰트 사이즈로 조정 */
+      
+    }
+    
+    .loginPassword {
+      height: 50px;
+      margin-bottom: 10px;
+      font-size: 16px; /* 추가: 원하는 폰트 사이즈로 조정 */
+    }
+  
+  
+  .login_spacing {
+    margin-bottom: 10px; /* 아이디와 비밀번호 사이의 간격을 조절하기 위한 마진 추가 */
+  }
+  
+
+  .login_wrap img {
+    width: 150px;
+    margin-bottom: 20px;
+    margin-top: 50px; /* 로고 상단 간격 */
+  }
+  
+  .login_wrap .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .login_wrap .btn_login {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #fd7e14;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px; /* 요소 사이의 간격 추가 */
+  }
+  
+  .login_wrap .btn_login:hover {
+    background-color: #dd6f15;
+  }
+  
+  .login_wrap ul.list-unstyled {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .login_wrap ul.list-unstyled li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .login_wrap ul.list-unstyled li:last-child {
+    margin-right: 0;
+  }
+
+
+  
+  /* 로그인화면 폼 */
+  .login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px; /* 폼 사이의 간격 조정 */
+  }
+ 
+  
+  /* 윗 로고 폼 */
+  .logo-container {
+    width: 100%; /* 원하는 버튼 너비로 조정 */
+    height: 100px; /* 원하는 버튼 높이로 조정 */
+    border: 1px solid #00000046; /* 폼 경계 선 스타일 및 색상 */
+    padding: 2px; /* 폼 경계 내부 여백 */
+    margin-bottom: 20px; /* 로고 위 아래 여백 */
+    margin-top: 40px; /* 로고 위 아래 여백 */
+  }
+  
+  /* 아래 로고 폼 */
+  .footer content {
+    width: 100%; /* 원하는 버튼 너비로 조정 */
+    height: 100px; /* 원하는 버튼 높이로 조정 */
+    border: 1px solid #00000046; /* 폼 경계 선 스타일 및 색상 */
+    padding: 2px; /* 폼 경계 내부 여백 */
+    margin-bottom: 20px; /* 로고 위 아래 여백 */
+    margin-top: 40px; /* 로고 위 아래 여백 */
+  }
+
+    /* 로그인화면 소셜로그인 */
+    .login_wrap2 {
+      max-width: 100%;
+      /* border: 1px solid #000000; */
+      margin-bottom: 20px;
+    }
+    
+  
+  
+  /* 소셜로그인 */
+  .btn-login-social_wrap {
+    width: 300px; /* 원하는 버튼 너비로 조정 */
+    height: 80px; /* 원하는 버튼 높이로 조정 */
+    border: none;
+    background-color: transparent;
+    position: relative;
+    font-size: 16px; /* 추가: 원하는 폰트 사이즈로 조정 */
+    font-family: Nanum, sans-serif;
+  }
+  
+  .login-social_icon {
+    margin-top: 20px; /* 로고 위 아래 여백 */
+    width: 100%; /* 버튼 안의 아이콘 이미지를 버튼 너비에 맞게 조정 */
+    height: auto; /* 아이콘 이미지의 높이를 자동으로 조정 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+
+
+
+  .btn-login-social_wrap {
+    width: 300px; /* 원하는 버튼 너비로 조정 */
+    height: 80px; /* 원하는 버튼 높이로 조정 */
+    border: none;
+    background-color: transparent;
+    position: relative;
+  }
+
+
+  .login-social_icon {
+    width: 100%; /* 버튼 안의 아이콘 이미지를 버튼 너비에 맞게 조정 */
+    height: auto; /* 아이콘 이미지의 높이를 자동으로 조정 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  
+
+  /* MemberLogin.css */
+
+/* Container styles */
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 15px;
+}
+
+/* Row styles */
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* Column styles */
+.col-md-4 {
+  width: 33.33%;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
+/* Heading styles */
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Link styles */
+.links a {
+  color: #000000;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.links a:hover {
+  color: #ff0000;
+}
+
+/* Social media icons styles */
+.social {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social li a {
+  color: #000000;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Footer bottom styles */
+.f-btm {
+  margin-top: 20px;
+}
+
+.f-btm p {
+  margin: 0;
+}
+
+/* Additional styles */
+.footer.content {
+  border: 1px solid #000000;
+  padding: 2px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+/* 아이디, 비밀번호, 찾기/ 회원가입 */
+.signup-form {
+  margin-top: 20px;
+  
+}
+
+.signup-form ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  
+}
+
+.signup-form li {
+  display: inline-block;
+  margin-right: 10px;
+  
+}
+
+.signup-form li:last-child {
+  margin-right: 0;
+  
+}
+
+.signup-form li a {
+  color: #fd7e14;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: Nanum, sans-serif;
+}
+
+.signup-form li a:hover {
+  color: #fd7e14; /* hover 시 글자색 변경 */
+}
+
+/* 체크박스 */
+.CheckboxContainer {
+  display: flex;
+  align-items: center;
+}
+
+.FormCheck_Label {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+
+  /* 체크박스의 기본 스타일 */
+.FormCheck_Input {
+  width: 15px;
+  height: 15px;
+  appearance: none;
+  border: 2px solid #00000046;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  margin-right: 8px;
+  background-color: transparent;
+  font-size: 10px;
+  font-family: Nanum, sans-serif;
+  position: relative;
+}
+
+/* 체크박스의 체크 상태에 대한 스타일 */
+.FormCheck_Input:checked {
+  background-color: #ff781e;/* 050505 */
+}
+
+/* 체크 표시 스타일 */
+  /* 기본적으로 체크 표시를 숨깁니다 (opacity를 0으로 설정) */
+  .FormCheck_Input::after {
+  content: '\2713';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  color: white;
+  font-size: 16px;
+  border-radius: 50%;
+  background-color: #fd7e14;
+  opacity: 0; /* 체크 표시 숨김 */
+}
+
+/* 체크박스가 체크 상태일 때, ::after 영역을 보이도록 opacity를 1로 설정 */
+.FormCheck_Input:checked::after {
+  opacity: 1; /* 체크 표시 보이기 */
+}
+
+

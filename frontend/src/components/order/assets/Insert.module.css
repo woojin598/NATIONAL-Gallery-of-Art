@@ -1,0 +1,70 @@
+.order-insert-container {
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.order-insert-heading {
+  color: #333333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.order-insert-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.order-insert-image {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.order-insert-info {
+  text-align: left;
+}
+
+.order-insert-artist,
+.order-insert-title,
+.order-insert-price,
+.order-insert-description,
+.order-insert-buyer {
+  margin: 5px 0;
+  color: #666666;
+  font-size: 16px;
+}
+
+.order-insert-loading {
+  color: #666666;
+  font-size: 16px;
+}
+
+.order-insert-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-insert-label {
+  margin-right: 10px;
+  color: #666666;
+  font-size: 16px;
+}
+
+.order-insert-input {
+  padding: 5px 10px;
+}
+
+.order-insert-button {
+  padding: 5px 10px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.order-insert-button:hover {
+  background-color: #555555;
+}

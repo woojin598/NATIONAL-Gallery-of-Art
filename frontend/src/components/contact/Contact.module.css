@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Broisther';
+    src: url('../../assets/Broisther.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Nanum';
+    src: url('../../assets/NanumSquareNeoTTF-bRg.woff2') format('woff2'),
+        url('../../assets/NanumSquareNeoTTF-bRg.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Bodoni';
+    src: url('../../assets/BodoniXT.ttf') format('truetype');
+}
+
+.customFont {
+    font-family: 'Bodoni';
+    margin-bottom: 3rem;
+}
+
+.contactContainer {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.contactHeader {
+    font-family: 'Bodoni';
+    color: #212529;
+    font-size: 30px;
+}
+
+.contactDescription {
+    color: #6c757d;
+    font-size: 14px;
+    font-family: 'Nanum';
+}
+
+.contactTitle {
+    font-family: 'Bodoni';
+    color: #3f51b5;
+    font-size: 23px;
+    margin-top: 20px;
+}
+
+.contactInfo {
+    color: #343a40;
+    font-size: 16px;
+    font-family: 'Nanum';
+}
+
+.sectionTitle {
+    margin-bottom: 1px;
+}

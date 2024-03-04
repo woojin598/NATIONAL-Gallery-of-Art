@@ -1,0 +1,320 @@
+/* MemberLogin.css */
+
+/* 폰트 설정 */
+@font-face {
+  font-family: 'Nanum';
+  /* 원하는 폰트 이름 설정 */
+  src: url('../../assets/NanumSquareNeoTTF-bRg.woff2') format('woff2'),
+    url('../../assets/NanumSquareNeoTTF-bRg.woff') format('woff');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Nanum, sans-serif;
+}
+
+/* 배너 이미지 컨테이너 */
+.bannerImageContainer {
+  width: 100%;
+  max-height: 250px; /* 원하는 최대 높이를 설정합니다. */
+  overflow: hidden;
+  margin-bottom: 50px;
+  position: relative; /* 자식 요소를 위한 기준이 되도록 설정 */
+}
+
+/* 배너 이미지 */
+.yourImageClass {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center bottom; /* 이미지를 수평과 수직으로 가운데로 잘라줍니다. */
+}
+
+/* 로그인탭 */
+.login_wrap .login_tabs {
+  display: flex;
+  /* justify-content: space-between; */ /* space-between 대신 space-around로 변경 */
+  /* border-radius: 8px; */
+  overflow: hidden;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+.login_hr {
+  border-bottom: 1px solid #ccc;
+}
+
+.login_hr a {
+  font-size: 10px;
+}
+
+.login_wrap .login_tabs .nav-link {
+  position: relative;
+  flex: 1;
+  padding: 15px 0; /* 탭높이  */
+  width: 150px; /* 탭의 너비를 150px로 설정 */
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  background-color: #f6f6f6;
+  border: none;
+  transition: background-color 0.3s;
+  font-size: 16px;
+  font-family: 'Nanum', sans-serif;
+  cursor: pointer; /* 커서를 손가락 형태로 변경하여 클릭 가능한 상태 표시 */
+  margin: 2px; /* 탭 사이의 간격을 5px로 설정 */
+}
+
+.login_wrap .login_tabs .nav-link.active {
+  background-color: #d63384;
+  color: #fff;
+}
+
+.login_wrap .login_tabs .nav-link:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #d63384;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.login_wrap .login_tabs .nav-link.active:before {
+  transform: scaleX(1);
+}
+
+/* 로그인과 회원가입 폼 컨테이너를 나란히 배치 */
+.login_wrap_container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* 회원가입 폼 스타일 */
+.signup-form {
+  flex: 1;
+  margin-left: 50px; /* 왼쪽 간격 50px */
+}
+
+/* 입력 그룹 간격(로그인링크) */
+.insertLink {
+  font-size: 16px;
+  /* font-weight: bold; */
+  color: #ff781e;
+  text-decoration: none;
+  font-family: 'Nanum', sans-serif;
+}
+
+/* 로그인 */
+.login_wrap {
+  flex: 1;
+  margin-left: 20px; /* 왼쪽 간격 10px */
+  max-width: 800px;
+  max-height: 800px;
+  border: none; /* 변경: 폼의 테두리선을 없앱니다. */
+  /* padding: 20px; */
+  /* margin-top: 20px;
+  margin-bottom: 20px; */
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: transparent; /* 변경: 폼의 배경 색상을 투명하게 설정 */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+/* 입력 필드 스타일 */
+.login_wrap .inputField {
+  margin-top: 10px;
+  flex: 1;
+  height: 60px;
+  padding: 10px;
+  font-size: 16px; /* 입력 필드 폰트 사이즈 수정 */
+  outline: none;
+  border: none;
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 50px; /* 둥근 테두리 추가 */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+}
+
+/* 입력 필드 플레이스홀더 스타일 */
+.login_wrap .inputField::placeholder {
+  color: #999;
+}
+
+/* 입력 필드에 포커스 시 아웃라인 스타일 적용 */
+.login_wrap .inputField:focus {
+  box-shadow: 0 0 8px rgba(244, 67, 54, 0.5);
+  border: 2px solid #f44336;
+  background-color: #ffffff;
+}
+
+/* 로그인 버튼 스타일 */
+.login_wrap .btn_login {
+  height: 60px;
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #ccc; /* 가입 전에는 회색 배경색으로 설정 */
+  color: #fff;
+  font-size: 20px; /* 버튼 폰트 사이즈 수정 */
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.login_wrap .btn_login:hover {
+  background-color: #d63384;
+}
+
+.login_wrap ul.list-unstyled {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login_wrap ul.list-unstyled li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.login_wrap ul.list-unstyled li:last-child {
+  margin-right: 0;
+}
+
+/* 로그인화면 폼 */
+.login-container {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr;
+  gap: 30px;  */
+  width: 1000px; /* 원하는 너비로 설정 */
+  min-width: 1000px; /* 최소 너비를 1000px로 설정 */
+  min-height: 100vh;
+}
+
+/* 윗 로고 폼 */
+.logo-container {
+  width: 100%; /* 원하는 버튼 너비로 조정 */
+  height: 100px; /* 원하는 버튼 높이로 조정 */
+  border: 1px solid #00000046; /* 폼 경계 선 스타일 및 색상 */
+  padding: 2px; /* 폼 경계 내부 여백 */
+  margin-bottom: 20px; /* 로고 위 아래 여백 */
+  margin-top: 40px; /* 로고 위 아래 여백 */
+}
+
+/* 로그인 화면 소셜 로그인 */
+.login_wrap2 {
+  max-width: 100%;
+  display: flex; /* 로그인 탭을 가로로 나란히 보이도록 변경 */
+  justify-content: space-between; /* 로그인 탭 사이에 간격 주기 */
+  margin-bottom: 20px;
+}
+
+/* 소셜로그인 버튼 공통 스타일 */
+.btn-login-social_wrap {
+  width: 300px;
+  height: 80px;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  font-size: 16px;
+  font-family: 'Nanum', sans-serif;
+}
+
+.login-social_icon {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-social_icon {
+  width: 100%; /* 버튼 안의 아이콘 이미지를 버튼 너비에 맞게 조정 */
+  height: auto; /* 아이콘 이미지의 높이를 자동으로 조정 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 체크박스 */
+.CheckboxContainer {
+  display: flex;
+  font-family: Nanum, sans-serif;
+  margin-top: 20px;
+}
+
+.FormCheck_Label {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* 체크박스의 기본 스타일 */
+.FormCheck_Input {
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  border: 1px solid #00000046;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  margin-right: 8px;
+  background-color: transparent;
+  /* font-size: 5px; */
+  position: relative;
+}
+
+/* 체크박스의 체크 상태에 대한 스타일 */
+.FormCheck_Input:checked {
+  background-color: #d63384;
+}
+
+/* 체크 표시 스타일 */
+/* 기본적으로 체크 표시를 숨깁니다 (opacity를 0으로 설정) */
+.FormCheck_Input::after {
+  content: '\2713';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  border-radius: 50%;
+  opacity: 0; /* 체크 표시 숨김 */
+}
+
+/* 체크박스가 체크 상태일 때, ::after 영역을 보이도록 opacity를 1로 설정 */
+.FormCheck_Input:checked::after {
+  opacity: 1; /* 체크 표시 보이기 */
+}
+
+.hr-sect {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 16px;
+  margin: 8px 0px;
+  margin-top: 45px;
+}
+
+.hr-sect::before,
+.hr-sect::after {
+  content: "";
+  flex-grow: 1;
+  background: #ccc;
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px 16px;
+}
+

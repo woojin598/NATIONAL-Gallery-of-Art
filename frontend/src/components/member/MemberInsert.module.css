@@ -1,0 +1,203 @@
+/* 전체 스타일 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nanum', sans-serif;
+  background-color: #ffffff;
+  /* 배경 색상을 수정 */
+  color: #242424;
+  /* 폰트 색상을 수정 */
+}
+
+/* 회원 가입 폼 컨테이너 */
+.signupContainer {
+  background-color: transparent;
+  /* 폼의 배경 색상을 투명하게 설정 */
+  padding: 40px;
+  max-width: 600px;
+  /* 반응형으로x */
+  margin: auto;
+  min-height: 100vh;
+  /* 반응형으로x */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*행  */
+  /* justify-content: center; */
+  /* 열 */
+  border-radius: 10px;
+}
+
+/* 제목 스타일 */
+.signupHeading {
+  font-size: 30px;
+  /* 제목 폰트 사이즈 수정 */
+  font-weight: bold;
+  text-align: center;
+  margin-top: 30px;
+  font-family: 'Nanum', sans-serif;
+}
+
+/* 회원 가입 폼 */
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* 입력 그룹 간격 */
+.formGroup {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* 입력 그룹 간격(로그인링크) */
+.formGroupLogin {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 가운데 정렬 추가 */
+}
+
+/* 입력 그룹 간격(로그인링크) */
+.loginLink {
+  font-size: 18px;
+  /* font-weight: bold; */
+  color: #e91e63;
+  text-decoration: none;
+  font-family: 'Nanum', sans-serif;
+}
+
+/* 입력 필드 스타일 */
+.inputField {
+  flex: 1;
+  height: 50px;
+  padding: 10px;
+  font-size: 16px;
+  /* 입력 필드 폰트 사이즈 수정 */
+  outline: none;
+  border: none;
+  background-color: #ffffff;
+  color: #333;
+  border-radius: 20px;
+  /* 둥근 테두리 추가 */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  /* 그림자 효과 추가 */
+}
+
+/* 입력 필드 플레이스홀더 스타일 */
+.inputField::placeholder {
+  color: #999;
+}
+
+/* 입력 필드에 포커스 시 아웃라인 스타일 적용 */
+.inputField:focus {
+  box-shadow: 0 0 8px rgba(244, 67, 54, 0.5);
+  border: 2px solid #f44336;
+  background-color: #ffffff;
+}
+
+/* 체크컨테이너 스타일 */
+.genderCheckontainer {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+/* 회원 가입 버튼 스타일 */
+.submitButton {
+  height: 60px;
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #ccc;
+  /* 가입 전에는 회색 배경색으로 설정 */
+  color: #fff;
+  font-size: 20px;
+  /* 버튼 폰트 사이즈 수정 */
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: rgba(244, 67, 54, 0.8);
+}
+
+/* 체크박스 */
+.FormCheck_Label {
+  margin-right: 20px;
+  display: flex;
+  /* align-items: center;  체크박스 위치  */
+}
+
+/* 체크박스의 기본 스타일 */
+.FormCheck_Input {
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  margin-right: 8px;
+  /* 체크박스와 글자와 간격 */
+  background-color: transparent;
+  /*   font-size: 10px;
+  font-family: Nanum, sans-serif; */
+  position: relative;
+}
+
+/* 체크박스의 체크 상태에 대한 스타일 */
+.FormCheck_Input:checked {
+  background-color: #f44336c5;
+}
+
+/* 체크 표시 스타일 */
+/* 기본적으로 체크 표시를 숨깁니다 (opacity를 0으로 설정) */
+.FormCheck_Input::after {
+  content: '\2713';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  border-radius: 50%;
+  opacity: 0;
+  /* 체크 표시 숨김 */
+}
+
+/* 체크박스가 체크 상태일 때, ::after 영역을 보이도록 opacity를 1로 설정 */
+.FormCheck_Input:checked::after {
+  opacity: 1;
+  /* 체크 표시 보이기 */
+}
+
+/* 체크박스 라벨 스타일 */
+.checkboxLabel a {
+  color: #f44336;
+  text-decoration: none;
+  font-family: 'Nanum', sans-serif;
+  font-size: 14px;
+  /* 체크박스 라벨 폰트 사이즈 수정 */
+  letter-spacing: 2px;
+}
+
+/* 이름 입력 필드와 성별 라디오 버튼을 나란히 정렬하기 위한 Flexbox 컨테이너 */
+.formGroupRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* 두 요소 사이에 간격 추가 */
+  margin-bottom: 20px;
+  /* 필요한 간격 설정 */
+  flex-wrap: wrap;
+  /* 요소들이 한 줄에 배치되도록 설정 */
+}

@@ -1,0 +1,62 @@
+
+
+/* 폰트 설정 */
+@font-face {
+  font-family: 'Nanum';
+  /* 원하는 폰트 이름 설정 */
+  src: url('../../assets/NanumSquareNeoTTF-bRg.woff2') format('woff2'),
+    url('../../assets/NanumSquareNeoTTF-bRg.woff') format('woff');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Nanum, sans-serif;
+}
+
+.contentContainer {
+  /* 컨텐츠 컨테이너 스타일 */
+  font-family: 'Nanum';
+  margin: 20px;
+}
+
+.member {
+  /* 회원 정보 스타일 */
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.menu {
+  /* 메뉴 스타일 */
+  font-size: 16px;
+  color: #333;
+  margin-top: 20px;
+}
+
+.menu a {
+  /* 링크 스타일 */
+  /* color: blue;
+  text-decoration: underline;
+  cursor: pointer; */
+  font-size: 18px;
+  /* font-weight: bold; */
+  color: #ff781e;
+  text-decoration: none;
+  font-family: 'Nanum', sans-serif;
+}
+
+.menu a.link {
+  /* 상품 등록 링크에만 추가 스타일 적용 */
+  color: green;
+  font-weight: bold;
+}
+
+
+.insertLink {
+  font-size: 18px;
+  /* font-weight: bold; */
+  color: #ff781e;
+  text-decoration: none;
+  font-family: 'Nanum', sans-serif;
+}

@@ -1,0 +1,421 @@
+@font-face {
+    font-family: 'Nanum';
+    /* 원하는 폰트 이름 설정 */
+    src: url('../../assets/NanumSquareNeoTTF-bRg.woff2') format('woff2'),
+        url('../../assets/NanumSquareNeoTTF-bRg.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Bodoni';
+    src: url('../../assets/BodoniXT.ttf') format('truetype');
+
+}
+
+
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.containerXxl {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, .75rem);
+    padding-left: var(--bs-gutter-x, .75rem);
+    margin-right: auto;
+    margin-left: auto
+}
+
+.formControl {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #bebebe;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 0px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+}
+
+.customBlank {
+    color: #c9c9c9;
+    font-family: 'Nanum';
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.customText {
+    color: #cecece;
+    font-family: 'Nanum';
+    font-size: 15px;
+}
+
+.customHead {
+    color: #ffffff;
+    font-family: 'Bodoni';
+    font-size: 45px;
+}
+
+.customHead2 {
+    color: #ffffff;
+    font-family: 'Nanum';
+    font-size: 25px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .formControl {
+        transition: none
+    }
+}
+
+.formControl[type="file"] {
+    overflow: hidden;
+}
+
+.formControl[type="file"]:not(:disabled):not(:read-only) {
+    cursor: pointer;
+}
+
+.formControl:focus {
+    color: #545a5b;
+    background-color: #fff !important;
+    border-color: #b98bdc !important;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(171, 47, 248, 0.6)
+}
+
+
+.formControl::placeholder {
+    color: #6c757d;
+    opacity: 1
+}
+
+.formControl:disabled,
+.formControl:read-only {
+    opacity: 1
+}
+
+.fileInput {
+    color: #c5c5c5;
+    font-family: 'Nanum';
+    font-size: 14px;
+    font-weight: 500;
+    padding: 18px 0;
+}
+
+.formControl::file-selector-button {
+    padding: .375rem .75rem;
+    margin: -.375rem -.75rem;
+    margin-inline-end: .75rem;
+    color: #808B8D;
+    background-color: #e9ecef;
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: 1px;
+    border-radius: 0;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .formControl::file-selector-button {
+        transition: none
+    }
+}
+
+.formControl:hover:not(:disabled):not(:read-only)::file-selector-button {
+    background-color: #dde0e3
+}
+
+.formControl::-webkit-file-upload-button {
+    padding: .375rem .75rem;
+    margin: -.375rem -.75rem;
+    margin-inline-end: .75rem;
+    color: #808B8D;
+    background-color: #e9ecef;
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: 1px;
+    border-radius: 0;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .formControl::-webkit-file-upload-button {
+        transition: none
+    }
+}
+
+.formControl:hover:not(:disabled):not(:read-only)::-webkit-file-upload-button {
+    background-color: #dde0e3
+}
+
+.py5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important
+}
+
+@media (min-width: 576px) {
+
+    .container,
+    .container-sm {
+        max-width: 540px
+    }
+}
+
+@media (min-width: 768px) {
+
+    .container,
+    .container-sm,
+    .container-md {
+        max-width: 720px
+    }
+}
+
+@media (min-width: 992px) {
+
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg {
+        max-width: 960px
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 1140px
+    }
+}
+
+@media (min-width: 1400px) {
+
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl,
+    .containerXxl {
+        max-width: 1320px
+    }
+}
+
+.booking {
+    background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(./assets/booking.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.p5 {
+    padding: 3rem !important
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x) / -2);
+    margin-left: calc(var(--bs-gutter-x) / -2)
+}
+
+.row>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) / 2);
+    padding-left: calc(var(--bs-gutter-x) / 2);
+    margin-top: var(--bs-gutter-y)
+}
+
+.g5,
+.gx-5 {
+    --bs-gutter-x: 3rem
+}
+
+.g5,
+.gy-5 {
+    --bs-gutter-y: 3rem
+}
+
+.alignItemsCenter {
+    align-items: center !important
+}
+
+.colMd6 {
+    flex: 0 0 auto;
+    width: 50%
+}
+
+.textWhite {
+    color: #fff !important
+}
+
+.textUppercase {
+    text-transform: uppercase !important
+}
+
+.mb4 {
+    margin-bottom: 1.5rem !important
+}
+
+.colMd6 {
+    flex: 0 0 auto;
+    width: 50%
+}
+
+.g3,
+.gx3 {
+    --bs-gutter-x: 1rem
+}
+
+.g3,
+.gy3 {
+    --bs-gutter-y: 1rem
+}
+
+.formFloating {
+    position: relative;
+}
+
+.formFloating2 {
+    position: relative;
+}
+
+.formFloating>.formControl,
+.formFloating>.form-select {
+    height: calc(3.5rem + 2px);
+    padding: 1rem .75rem
+}
+
+.formFloating>label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 1rem .75rem;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transform-origin: 0 0;
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .formFloating>label {
+        transition: none
+    }
+}
+
+.formFloating>.formControl::placeholder {
+    color: transparent
+}
+
+.formFloating>.formControl:focus,
+.formFloating>.formControl:not(:placeholder-shown) {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem
+}
+
+.formFloating>.formControl:-webkit-autofill {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem
+}
+
+.formFloating>.form-select {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem
+}
+
+.formFloating>.formControl:focus~label,
+.formFloating>.formControl:not(:placeholder-shown)~label,
+.formFloating>.form-select~label {
+    opacity: .65;
+    transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem)
+}
+
+.formFloating>.formControl:-webkit-autofill~label {
+    opacity: .65;
+    transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem)
+}
+
+
+
+.bgTransparent {
+    background-color: rgba(155, 20, 20, 0) !important
+}
+
+.col12 {
+    flex: 0 0 auto;
+    width: 100%
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #808B8D;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: 0px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn {
+        transition: none
+    }
+}
+
+.btnOutlineLight {
+    color: #f5f5f5;
+    border-color: #f5f5f5
+}
+
+.btnOutlineLight:hover {
+    color: #000;
+    background-color: #f5f5f5;
+    border-color: #f5f5f5
+}
+
+.btn-check:focus+.btnOutlineLight,
+.btnOutlineLight:focus {
+    box-shadow: 0 0 0 .25rem rgba(164, 47, 248, 0.6)
+}
+
+
+
+.btnOutlineLight:disabled,
+.btnOutlineLight.disabled {
+    color: #f5f5f5;
+    background-color: transparent
+}
+
+.w100 {
+    width: 100% !important
+}
+
+.py3 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important
+}

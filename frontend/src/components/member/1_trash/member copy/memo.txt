@@ -1,0 +1,115 @@
+flex-direction: 아이템들의 배치 방향을 설정합니다 (가로 또는 세로).
+justify-content: 아이템들의 수평 정렬 방식을 설정합니다 (시작, 끝, 가운데, 동일한 간격 등).
+align-items: 아이템들의 수직 정렬 방식을 설정합니다 (시작, 끝, 가운데 등).
+flex: 아이템의 너비를 설정합니다 (유연한 너비 조정).
+flex-wrap: 아이템들이 한 줄에 다 들어가지 않을 경우 줄바꿈 여부를 설정합니다
+ display: flex; /* 한줄 나란히 만들고 싶을떄 */
+
+
+------
+.flex-container {
+  display: flex; /* Flex 컨테이너를 정의 */
+  align-items: center; /* Flex 아이템들을 세로 중앙에 정렬 */
+}
+
+flex-start: Flex 아이템들을 컨테이너의 시작 부분으로 정렬합니다.
+flex-end: Flex 아이템들을 컨테이너의 끝 부분으로 정렬합니다.
+center: Flex 아이템들을 컨테이너의 세로 중앙에 정렬합니다.
+baseline: Flex 아이템들을 텍스트의 기준선(baseline)에 맞춰 정렬합니다.
+stretch: Flex 아이템들을 컨테이너의 높이에 맞게 늘립니다. (기본값)
+initial: 기본값을 사용합니다.
+inherit: 부모 요소로부터 상속받습니다.
+-----
+https://dribbble.com/signup/new
+
+---
+<div className={styles.CheckboxContainer}>
+                      <label className={styles.FormCheck_Label}>
+                        <input
+                          type="checkbox"
+                          className={styles.FormCheck_Input}
+                          checked={isRemember}
+                          onChange={handleOnChange}
+                        />
+                        아이디 저장
+                      </label>
+                    </div>
+
+
+                    --------------
+
+
+
+제목 스타일(.signupHeading): 24px
+입력 필드 스타일(.inputField): 16px
+라디오 버튼 라벨 스타일(.genderRadio_Label): 16px
+회원 가입 버튼 스타일(.submitButton): 16px
+체크박스 라벨 스타일(.checkboxLabel a): 15px
+
+
+
+로그인 인풋 포커스
+.inputField:focus {
+  box-shadow: 0 0 8px rgba(54, 71, 244, 0.5); /* 파란색 그림자 */
+  border: 2px solid #2196f3; /* 파란색 테두리 */
+  background-color: #ffffff; /* 흰색 배경 */
+  outline: none; /* 포커스 시 기본 아웃라인 제거 */
+  transition: box-shadow 0.3s, border 0.3s; /* 부드러운 효과를 위한 트랜지션 설정 */
+}
+
+
+
+로그인 탭 색상
+/* 로그인탭 */
+.login_wrap .login_tabs {
+  display: flex;
+  /* justify-content: space-between; */ /* space-between 대신 space-around로 변경 */
+  /* border-radius: 8px; */
+  overflow: hidden;
+  border-bottom: 1px solid #ccc; /* 탭 하단에 초기에는 투명한 직선 경계선 추가 */
+}
+
+.login_hr{
+  border-bottom: 1px solid #d63384;
+
+}
+
+.login_wrap .login_tabs .nav-link {
+  position: relative;
+  flex: 1;
+  padding: 15px 0; /* 탭높이  */
+  width: 150px; /* 탭의 너비를 150px로 설정 */
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  background-color: #f6f6f6;
+  border: none;
+  transition: background-color 0.3s;
+  font-size: 16px;
+  font-family: 'Nanum', sans-serif;
+  cursor: pointer; /* 커서를 손가락 형태로 변경하여 클릭 가능한 상태 표시 */
+  margin: 2px; /* 탭 사이의 간격을 5px로 설정 */
+  
+  
+}
+
+.login_wrap .login_tabs .nav-link.active {
+  background-color: #d63384;
+  color: #fff;
+}
+
+.login_wrap .login_tabs .nav-link:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #d63384;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.login_wrap .login_tabs .nav-link.active:before {
+  transform: scaleX(1);
+}
